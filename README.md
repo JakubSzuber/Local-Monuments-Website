@@ -38,16 +38,16 @@ xxx
 ## Docker Swarm commands
 xxx
 
-## Docker Swarm 
+## Docker Swarm Stack
 xxx
 
-## Docker commands
+## Kubernetes Iperative commands
 xxx
 
-## Docker commands
+## Kubernetes Iperative objects
 xxx
 
-## Docker commands
+## Docker Declarative objects
 xxx
 
 
