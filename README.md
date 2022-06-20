@@ -22,7 +22,7 @@ Whatever method to run the application you will chose you need to have [Docker](
 First you have to ...
 
 ```shell
-docker container urn ...
+docker container run -d -p -n xxx jakubszuber/munument-app-flask
 ```
 
 Then you need to run your databse ...
@@ -55,6 +55,8 @@ xxx
 <br>
 <br>
 todo:
+
+dodaj "drzewo glownego folderu" na repozytorium
 
 > **Note**
 > This is a note
