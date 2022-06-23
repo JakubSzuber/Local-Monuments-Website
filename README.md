@@ -22,7 +22,7 @@ Whatever method to run the application you will chose you need to have [Docker](
 First you have to ...
 
 ```shell
-docker container run -d -p -n xxx jakubszuber/munument-app-flask
+docker container run -p 5000:5000 jakubszuber/munument-app-flask
 ```
 
 Then you need to run your databse ...
