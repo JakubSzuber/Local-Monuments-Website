@@ -37,12 +37,6 @@ Next stem is run your revere porxy server - nginx
 docker container run -d jakubszuber/munument-app-nginx
 ```
 
-And the last container contains WSGI server - Gunicorn
-
-```shell
-docker container run -d jakubszuber/munument-app-gunicorn
-```
-
 
 ## Docker Compose
 xxx
