@@ -19,17 +19,30 @@ Whatever method to run the application you will chose you need to have [Docker](
 
 # Recomend:
 ## Docker commands
-First you have to ...
+First you have to run your main container with flask content
 
 ```shell
-docker container run -p 5000:5000 jakubszuber/munument-app-flask
+docker container run -d jakubszuber/munument-app-flask
 ```
 
-Then you need to run your databse ...
+Then you need to run your postgres database
 
 ```shell
-docker container urn ...
+docker container run -d jakubszuber/munument-app-database
 ```
+
+Next stem is run your revere porxy server - nginx
+
+```shell
+docker container run -d jakubszuber/munument-app-nginx
+```
+
+And the last container contains WSGI server - Gunicorn
+
+```shell
+docker container run -d jakubszuber/munument-app-gunicorn
+```
+
 
 ## Docker Compose
 xxx
