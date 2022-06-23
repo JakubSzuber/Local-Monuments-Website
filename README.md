@@ -19,17 +19,24 @@ Whatever method to run the application you will chose you need to have [Docker](
 
 # Recomend:
 ## Docker commands
-First you have to ...
+First you have to run your main container with flask content
 
 ```shell
-docker container urn ...
+docker container run -d jakubszuber/munument-app-flask
 ```
 
-Then you need to run your databse ...
+Then you need to run your postgres database
 
 ```shell
-docker container urn ...
+docker container run -d jakubszuber/munument-app-database
 ```
+
+Next stem is run your revere porxy server - nginx
+
+```shell
+docker container run -d jakubszuber/munument-app-nginx
+```
+
 
 ## Docker Compose
 xxx
@@ -55,6 +62,10 @@ xxx
 <br>
 <br>
 todo:
+
+dodaj "drzewo glownego folderu" na repozytorium
+dodaj zdjecia z docker desktop albo konsoli ze co powinno byc widac jesli kontener poprawnie chodzi
+dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
 
 > **Note**
 > This is a note
