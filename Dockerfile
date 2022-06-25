@@ -1,21 +1,15 @@
-FROM python:3.9
+FROM python:3.10.5
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV FLASK_APP "app.py"
-ENV FLASK_ENV "development"
-ENV FLASK_DEBUG True
+ENV PYTHONUNBUFFERED 1
 
-WORKDIR /Local-Monuments-Website
+RUN mkdir /code
 
-COPY app.py .
-# moze daj COPY . /app
+WORKDIR /code
 
-COPY requirements.txt /Local-Monuments-Website/requirements.txt
+COPY requirements.txt /code/
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+COPY . /code/
 
-EXPOSE 5000
-
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python", "run.py"]

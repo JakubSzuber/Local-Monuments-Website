@@ -1,8 +1,8 @@
-flask=2.1.2
-flask-sqlalchemy=2.5.1
-flask_wtf=1.0.1
-wtforms=3.0.1
-email-validator=1.2.1
-flask_bcrypt=1.0.1
-flask_login=0.6.1
-psycopg2=3.0.15
+flask==2.1.2
+flask-sqlalchemy==2.5.1
+flask_wtf==1.0.1
+wtforms==3.0.1
+email-validator==1.2.1
+flask_bcrypt==1.0.1
+flask_login==0.6.1
+psycopg2==2.9.3
