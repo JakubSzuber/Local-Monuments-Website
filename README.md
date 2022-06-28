@@ -73,3 +73,10 @@ dodaj do moich cutom images health check?
 
 > **Warning**
 > This is a warning
+
+<details>
+<summary>Result</summary>
+
+https://user-images.githubusercontent.com/1161307/171013513-95f18734-233d-45d3-aaf5-d6aec687db0e.mov
+
+</details>
