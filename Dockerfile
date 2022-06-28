@@ -2,14 +2,16 @@ FROM python:3.10.5
 
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /code
+RUN mkdir /app
 
-WORKDIR /code
+WORKDIR /app
 
-COPY requirements.txt /code/
+COPY requirements.txt /app/
 
 RUN pip install -r requirements.txt
 
-COPY . /code/
+COPY . /app/
+
+# EXPOSE 5000 ???
 
 CMD ["python", "run.py"]
