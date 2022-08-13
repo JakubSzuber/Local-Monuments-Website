@@ -1,4 +1,4 @@
-from app_directory import app
+from web import app
 import os
 
 if __name__ == '__main__':

@@ -1,10 +1,17 @@
-from app_directory import app
+import os
+from web import app
 from flask import render_template
 
 @app.route('/')
 @app.route('/home')
 def home_page():
-    return render_template('home.html')
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM books;')
+    books = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('home.html', books=books)
 
 @app.route('/about')
 def about_page():

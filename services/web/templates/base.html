@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Flask Application using Docker</title>
-    <!-- Bootstrap core CSS -->
-    <style>
-    body {
-        background-color: linen;
-    }
-    </style>
-  </head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
+    <style>{% block style %} {% endblock %}</style>
+</head>
 <body>
-    <h1>This is a Flask App containerised with Docker</h1>
+    <nav>
+        <a href="{{ url_for('home') }}">FlaskApp</a>
+        <a href="#">About</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
 </body>
+<style>
+  body {
+  background-color: red;
+  color: white
+  }
+</style>
 </html>

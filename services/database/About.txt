@@ -1,0 +1,3 @@
+mozliwe ze ten katalog nie bedzie potzrebany wiec jezeli:
+-bedzie (usun ten plik txt)
+-nie bedzie (napisz w tym pliku ze ten katalog jest pusty i napisz dlaczego i, ze kontener z baza danych nie potrzeba dodatkowych plikow i wszytko potzrebne do odpalenia kontenera postgresa jest zawarte w katalogu web oraz docker-cmpose a ten dir jest tylko taki pogladowy zeby katalogi odzwierciedlaly kontenery)

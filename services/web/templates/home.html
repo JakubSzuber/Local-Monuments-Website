@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Flask Application using Docker</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../static/css/home.css">
-  </head>
-<body>
-    <h1>This is a Flask App containerised with Docker</h1>
-</body>
-</html>
+{% block content %}
+    <h1>{% block title %} Books {% endblock %}</h1>
+    {% block style %} <link rel="stylesheet" href="../static/css/home.css"> {% endblock %}
+    {% for book in books %}
+        <div class='book'>
+            <h3>#{{ book[0] }} - {{ book[1] }} BY {{ book[2] }}</h3>
+            <i><p>({{ book[3] }} pages)</p></i>
+            <p class='review'>{{ book[4] }}</p>
+            <i><p>Added {{ book[5] }}</p></i>
+            <h1>DZIALA JESTES W HOME</h1>
+        </div>
+    {% endfor %}
+{% endblock %}
