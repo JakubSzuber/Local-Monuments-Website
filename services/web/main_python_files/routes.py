@@ -1,5 +1,5 @@
 import os
-from web import app
+from main_python_files import app, get_db_connection  # moze byc tu inaczej
 from flask import render_template
 
 @app.route('/')

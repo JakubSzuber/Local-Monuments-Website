@@ -1,12 +1,16 @@
-import os
-import psycopg2
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
+from main_python_files.config import DB  #  moze byc tu inaczej, a ponatto biblioteka os i/lub psycopg moze byc niepotzrebna i moze bedzie do usuniecia
+import psycopg2
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DB
+app.config['SECRET_KEY'] = 'ec9439cfc6c796ae2029594d'
+
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 # below func from blog article
 def get_db_connection():
@@ -16,4 +20,4 @@ def get_db_connection():
                             password='admin')
     return conn
 
-from web import routes
+from main_python_files import routes  #  moze byc tu inaczej
