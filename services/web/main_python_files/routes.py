@@ -1,9 +1,10 @@
 import os
+import psycopg2
 from main_python_files import app, get_db_connection  # moze byc tu inaczej
-from flask import render_template
+from flask import Flask, render_template
 
 @app.route('/')
-@app.route('/home')
+#@app.route('/home')
 def home_page():
     conn = get_db_connection()
     cur = conn.cursor()
