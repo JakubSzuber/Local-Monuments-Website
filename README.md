@@ -17,7 +17,7 @@ This project is containerized web application created form scratch. Whole applic
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
 
-# Recomend:
+# Recommended:
 ## Docker commands
 First you have to run your main container with flask content
 
