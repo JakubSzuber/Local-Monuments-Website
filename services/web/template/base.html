@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}- FlaskApp</title>
-    <style>{% block style %} {% endblock %}</style>
 </head>
 <body>
     <nav>
@@ -16,10 +15,12 @@
     </div>
 </body>
 <style>
-  body {
-  background-color: red;
-  color: white
-  }
+    {% block style %}
+      body {
+      background-color: red;
+      color: white
+      }
+    {% endblock %}
 </style>
 <! –– if it will be posiible move style part to head ––>
 </html>
