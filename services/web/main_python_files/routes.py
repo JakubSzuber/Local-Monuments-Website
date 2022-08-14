@@ -4,8 +4,8 @@ from main_python_files import app, get_db_connection  # moze byc tu inaczej
 from flask import Flask, render_template
 
 @app.route('/')
-#@app.route('/home')
-def home_page():
+@app.route('/home')
+def home():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM books;')

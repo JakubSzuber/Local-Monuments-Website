@@ -1,9 +1,9 @@
 from flask import Flask, render_template
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from main_python_files.config import DB  #  moze byc tu inaczej, a ponatto biblioteka os i/lub psycopg moze byc niepotzrebna i moze bedzie do usuniecia
 import psycopg2
-import os
 
 app = Flask(__name__, template_folder='../template')
 app.config['SQLALCHEMY_DATABASE_URI'] = DB
