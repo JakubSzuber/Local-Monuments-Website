@@ -1,38 +1,38 @@
-version: '3.8'
+version: '3.7'
 
 services:
   web:
-    build:
-      context: ./services/web
-      dockerfile: Dockerfile.prod
-    command: gunicorn --bind 0.0.0.0:5000 manage:app
-    volumes:
-      - static_volume:/home/app/web/project/static
-      - media_volume:/home/app/web/project/media
-    expose:
-      - 5000
-    env_file:
-      - ./.env.prod
-    depends_on:
-      - db
-  db:
-    image: postgres:13-alpine
-    volumes:
-      - postgres_data_prod:/var/lib/postgresql/data/
-    env_file:
-      - ./.env.prod.db
-  nginx:
-    build: ./services/nginx
-    volumes:
-      - static_volume:/home/app/web/project/static
-      - media_volume:/home/app/web/project/media
+    #build: web
+    image: flask_appp
+    restart: always
     ports:
-      - 1337:80
-    depends_on:
-      - web
+      - 5000:5000
+    networks:
+      - flask_network
+  proxy-server:
+    #build: proxy-server
+    image: custom-nginx
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - flask_network
+  db:
+    image: postgres:13
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - flask_network
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=flask_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  flask_network:
 
 volumes:
-  postgres_data_prod:
-  static_volume:
-  media_volume:
-  
+  postgres_data:

@@ -6,3 +6,4 @@ email-validator==1.2.1
 flask_bcrypt==1.0.1
 flask_login==0.6.1
 psycopg2==2.9.3
+gunicorn==20.1.0
