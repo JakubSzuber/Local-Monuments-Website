@@ -1,6 +1,6 @@
 server {
     listen        80;
-    server_name   flask-database;
+    server_name   localhost;  # Tutaj moze byc: flask-database albo localhost
     location / {
         proxy_pass http://web:5000;
     }

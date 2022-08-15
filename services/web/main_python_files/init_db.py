@@ -2,7 +2,7 @@ import os
 import psycopg2
 
 conn = psycopg2.connect(
-        host="flask-database",  # Tutaj moze byc inaczej
+        host="flask-database",  # Tutaj moze byc: localhost albo flask-database
         database="flask_db",
         user='admin',  # tu moze byc inaczej
         password='admin',

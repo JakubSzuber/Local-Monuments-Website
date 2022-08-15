@@ -1,23 +1,19 @@
 version: '3.7'
 
 services:
-  web:
-    #build: web
-    image: flask_appp
-    restart: always
-    ports:
-      - 5000:5000
-    networks:
-      - flask_network
-  proxy-server:
+
+#  proxy-server:
     #build: proxy-server
-    image: custom-nginx
-    restart: always
-    ports:
-      - 80:80
-    networks:
-      - flask_network
-  db:
+#    image: custom-nginx
+#    restart: always
+#    ports:
+#      - 80:80
+#    networks:
+#      - flask_network
+#     depends_on:
+#       - web
+  flask-database:
+    container_name: flask-database
     image: postgres:13
     restart: always
     ports:
@@ -30,9 +26,22 @@ services:
       - POSTGRES_DB=flask_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  web:
+    container_name: web
+    #build: web
+    image: flask_app
+    restart: always
+    ports:
+      - 5000:5000
+    networks:
+      - flask_network
+    depends_on:
+      - flask-database
+    links:
+      - flask-database
 
 networks:
-  flask_network:
+  flask_network: {}
 
 volumes:
-  postgres_data:
+  postgres_data: {}
