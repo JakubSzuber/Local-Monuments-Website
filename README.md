@@ -19,27 +19,27 @@ Whatever method to run the application you will chose you need to have [Docker](
 
 # Recommended:
 ## Docker commands
-First you have to run your main container with flask content
-
+XXX
+Run your nginx proxy server
 ```shell
-docker container run -d jakubszuber/munument-app-flask
+docker container run --name nginx-server --network flask_network -p 80:80 custom-ngin
 ```
 
-Then you need to run your postgres database
+Run your main container responsible for the application logic
 
 ```shell
-docker container run -d jakubszuber/munument-app-database
+docker container run --name web -p 5000:5000 --network flask_network flask_app
 ```
 
-Next stem is run your revere porxy server - nginx
-
+RUn your postgres database
 ```shell
-docker container run -d jakubszuber/munument-app-nginx
+docker container run --name flask-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
 ```
 
 
 ## Docker Compose
-xxx
+
+To run app with compose file you have to create directory wherever you want and then clone from that repo...
 
 # Other methods:
 ## Docker Swarm commands
