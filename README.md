@@ -13,6 +13,11 @@ This project is containerized web application created form scratch. Whole applic
 ---
 
 # How to run app
+> **Note**
+> If you will see error: "Internal Server Error" in browser that means you have to addictional use below command after run your containers:
+```
+docker exec -it web python main_python_files/init_db.py
+```
 
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
@@ -39,7 +44,7 @@ docker container run --name flask-database -d --network flask_network -e POSTGRE
 
 ## Docker Compose
 
-To run app with compose file you have to create directory wherever you want and then clone from that repo...
+To run app with compose file you have to create directory wherever you want and then clone from that repo...docker-compose up -d if...ordocker-compose up
 
 # Other methods:
 ## Docker Swarm commands
