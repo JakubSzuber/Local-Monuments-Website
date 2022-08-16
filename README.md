@@ -13,6 +13,11 @@ This project is containerized web application created form scratch. Whole applic
 ---
 
 # How to run app
+> **Note**
+> If you will see error in browser that means you have to addictional use below command after run your containers:
+```
+docker exec -it web python main_python_files/init_db.py
+```
 
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
