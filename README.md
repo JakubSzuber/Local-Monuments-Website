@@ -14,7 +14,7 @@ This project is containerized web application created form scratch. Whole applic
 
 # How to run app
 > **Note**
-> If you will see error in browser that means you have to addictional use below command after run your containers:
+> If you will see error: "Internal Server Error" in browser that means you have to addictional use below command after run your containers:
 ```
 docker exec -it web python main_python_files/init_db.py
 ```
