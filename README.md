@@ -22,7 +22,7 @@ Whatever method to run the application you will chose you need to have [Docker](
 XXX
 Run your nginx proxy server
 ```shell
-docker container run --name nginx-server --network flask_network -p 80:80 custom-ngin
+docker container run --name nginx-server --network flask_network -p 80:80 custom-nginx
 ```
 
 Run your main container responsible for the application logic
