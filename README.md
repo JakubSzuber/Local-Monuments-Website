@@ -44,7 +44,7 @@ docker container run --name flask-database -d --network flask_network -e POSTGRE
 
 ## Docker Compose
 
-To run app with compose file you have to create directory wherever you want and then clone from that repo...
+To run app with compose file you have to create directory wherever you want and then clone from that repo...docker-compose up -d if...ordocker-compose up
 
 # Other methods:
 ## Docker Swarm commands
