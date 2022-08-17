@@ -22,7 +22,7 @@ docker exec -it web python main_python_files/init_db.py
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
 
-# Recommended:
+# Recommended methods:
 ## Docker commands
 XXX
 Run your nginx proxy server
