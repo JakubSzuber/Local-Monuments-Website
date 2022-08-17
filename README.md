@@ -14,7 +14,7 @@ This project is containerized web application created form scratch. Whole applic
 
 # How to run app
 > **Note**
-> If you will see error: "Internal Server Error" in browser that means you have to addictional use below command after run your containers:
+> If you will see error: "Internal Server Error" in browser that means you have to additionally use below command after run your containers:
 ```
 docker exec -it web python main_python_files/init_db.py
 ```
@@ -72,9 +72,6 @@ dodaj "drzewo glownego folderu" na repozytorium
 dodaj zdjecia z docker desktop albo konsoli ze co powinno byc widac jesli kontener poprawnie chodzi
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
 dodaj do moich cutom images health check?
-
-> **Note**
-> This is a note
 
 > **Warning**
 > This is a warning
