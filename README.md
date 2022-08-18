@@ -14,7 +14,7 @@ This project is containerized web application created form scratch. Whole applic
 
 # How to run app
 > **Note**
-> If you will see error: "Internal Server Error" in browser that means you have to addictional use below command after run your containers:
+> If you will see error: "Internal Server Error" in browser that means you have to additionally use below command after run your containers:
 ```
 docker exec -it web python main_python_files/init_db.py
 ```
@@ -22,21 +22,20 @@ docker exec -it web python main_python_files/init_db.py
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
 
-# Recommended:
+# Recommended methods:
 ## Docker commands
-XXX
-Run your nginx proxy server
+You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
+Run your nginx proxy server by this command:
 ```shell
 docker container run --name nginx-server --network flask_network -p 80:80 custom-nginx
 ```
 
-Run your main container responsible for the application logic
-
+Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
 docker container run --name web -p 5000:5000 --network flask_network flask_app
 ```
 
-RUn your postgres database
+Run your postgres database by this command
 ```shell
 docker container run --name flask-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
 ```
@@ -72,9 +71,6 @@ dodaj "drzewo glownego folderu" na repozytorium
 dodaj zdjecia z docker desktop albo konsoli ze co powinno byc widac jesli kontener poprawnie chodzi
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
 dodaj do moich cutom images health check?
-
-> **Note**
-> This is a note
 
 > **Warning**
 > This is a warning
