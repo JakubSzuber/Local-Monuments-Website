@@ -5,7 +5,7 @@ from flask import Flask, render_template
 
 @app.route('/')
 @app.route('/home')
-def home():
+def home_page():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM books;')
