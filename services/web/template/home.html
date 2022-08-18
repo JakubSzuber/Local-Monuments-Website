@@ -1,8 +1,16 @@
 
 {% extends 'base.html' %}
 
+{% block style %}
+      body {
+      background-color: green;
+      color: white
+      }
+{% endblock %}
+
 {% block content %}
-    <h1>{% block title %} Books {% endblock %}</h1>
+    <h1>{% block title %} Home {% endblock %}</h1>
+
     {% for book in books %}
         <div class='book'>
             <h3>#{{ book[0] }} - {{ book[1] }} BY {{ book[2] }}</h3>
@@ -12,11 +20,5 @@
             <h1>DZIALA JESTES W HOME</h1>
         </div>
     {% endfor %}
-{% endblock %}
 
-{% block style %}
-      body {
-      background-color: green;
-      color: white
-      }
 {% endblock %}
