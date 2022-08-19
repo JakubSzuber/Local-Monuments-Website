@@ -3,30 +3,155 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/919/919853.png">
     <title>{% block title %} {% endblock %}- FlaskApp</title>
 
     <style>
-    {% block style %}
-      body {
-      background-color: red;
-      color: white
-      }
-    {% endblock %}
+        body {
+                margin: 0 auto;
+                color: white;
+                background-color: #202124;
+                background-position:center;
+                background-size: contain;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                transition: 0.5s;
+            }
+
+        body.active {
+            background-color: whitesmoke;
+            color: black;
+        }
+
+        .menu {
+            position: sticky;
+            top: 0;
+            background-color: #282A35;
+            padding:10px 0px 22px 0px;
+            color:white;
+            overflow: hidden;
+        }
+
+        .menu a {
+            color: white;
+            text-align: center;
+            padding: 11px 8px;
+            text-decoration: none;
+            font-size: 28px;
+        }
+
+        .menu a:hover {
+            color: pink;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        section {
+            margin-left:20px;
+        }
+
+        footer {
+            width: 100%;
+            height: 6%;
+            bottom: 0px;
+            background-color: #181a1e;
+            color: #fff;
+            position: absolute;
+            /*padding-top:3px;*/
+            /*padding-bottom:0px;*/
+            text-align:center;
+            font-size:12px;
+        }
+
+        footer p {
+            margin: 0px;
+            margin-top: 9px;
+        }
+
+        #home {
+            font-size: 38px;
+            margin-right: -4px;
+        }
+
+        #toggle {
+            position:relative;
+            top: 50%;
+            left: 93%;
+            display:block;
+            width:80px;
+            height:40px;
+            border-radius:160px;
+            background:#222;
+            transition:0.5s;
+            cursor: pointer;
+            box-shadow:     inset 0 8px 60px rgba(0,0,0,0.1),
+                            inset 0 8px 8px rgba(0,0,0,0.1),
+                            inset 0 -4px 4px rgba(0,0,0,0.1);
+        }
+
+        #toggle.active {
+            background-color: whitesmoke;
+            box-shadow: inset 0 2px 60px rgba(0,0,0,0.1),
+                        inset 0 2px 8px rgba(0,0,0,0.1),
+                        inset 0 -4px 4px rgba(0,0,0,0.05);
+        }
+
+        #toggle .indicator {
+            position:absolute;
+            top:0;
+            Left:0;
+            width:40px;
+            height:40px;
+            background:linear-gradient(to bottom,#444,#222);
+            border-radius:50%;
+            transform:scale(0.9);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.5),
+                        inset 4px 4px rgba(255,255,255,0.2)
+                        inset -4px 4px rgba(255,255,255,0.2);
+            transition: 0.5s;
+        }
+
+        #toggle.active .indicator {
+            left: 40px;
+            background:linear-gradient(to bottom,#eaeaea,#f9f9f9);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1),
+                        inset 4px 4px rgba(255,255,255,1)
+                        inset -4px 4px rgba(255,255,255,1);
+        }
+        {% block style %}{% endblock %}
 </style>
 </head>
 
 <body>
     <!-- Menu Navigation Bar -->
     <nav class="menu">
-        <a href="{{ url_for('home_page') }}">Home</a>
         <a href="{{ url_for('about_page') }}">About</a>
+        <a id="home" href="{{ url_for('home_page') }}">Home</a>
         <a href="{{ url_for('gallery_page') }}">Gallery</a>
     </nav>
 
-    <hr>
-
-    <div class="content">
+    <!-- Body content section -->
+    <section>
+        <div id="toggle">
+            <i class="indicator"></i>
+        </div>
         {% block content %} {% endblock %}
-    </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum</p>
+        <p><a href="https://github.com/JakubSzuber/Local-Monuments-Website/blob/main/README.md">(About project)</a></p>
+    </footer>
+
+    <!-- JavaScript code -->
+    <script>
+        const body = document.querySelector('body');
+        const toggle = document.getElementById('toggle');
+        toggle.onclick=function(){
+            toggle.classList.toggle('active');
+            body.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
