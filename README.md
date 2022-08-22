@@ -72,9 +72,6 @@ dodaj zdjecia z docker desktop albo konsoli ze co powinno byc widac jesli konten
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
 dodaj do moich cutom images health check?
 
-> **Warning**
-> This is a warning
-
 <details>
 <summary>Result</summary>
 
