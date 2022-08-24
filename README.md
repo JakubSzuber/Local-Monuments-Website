@@ -7,7 +7,8 @@ This project is containerized web application created form scratch. Whole applic
 
 # Tools used in the project
 *Main tools:* [![](https://img.shields.io/badge/Python-C1E1C1?style=for-the-badge&logo=Python&logoColor=blue)](https://www.python.org/) [![](https://img.shields.io/badge/PostgreSQL-FFFFFF?style=for-the-badge&logo=PostgreSQL&logoColor=blue)](https://www.python.org/) [![](https://img.shields.io/badge/Docker-FFFFFF?style=for-the-badge&logo=Docker&logoColor=blue)](https://www.docker.com/) <br>
-*Python libraries:* `Flask`, `Psycopg2` <br>
+*Python libraries:* `Flask`, `Psycopg2` 
+<br>
 *Other tools:* `Kubernetes`, `Docker Compose`, `Docker Swarm`
 
 ---
