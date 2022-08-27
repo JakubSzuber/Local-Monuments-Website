@@ -32,6 +32,10 @@
             overflow: hidden;
         }
 
+        .menu.active {
+        background-color: #222425;
+        }
+
         .menu a {
             color: white;
             text-align: center;
@@ -63,6 +67,11 @@
             font-size:12px;
         }
 
+        footer.active {
+            background-color: #2f2f35;
+            color: white;
+        }
+
         footer p {
             margin: 0px;
             margin-top: 9px;
@@ -74,8 +83,8 @@
         }
 
         #toggle {
-            position:relative;
-            top: 50%;  /*TODO: change value*/
+            position: absolute;
+            top: 2%;
             left: 93%;
             display:block;
             width:80px;
@@ -148,9 +157,14 @@
     <script>
         const body = document.querySelector('body');
         const toggle = document.getElementById('toggle');
+        const footer = document.querySelector('footer');
+        const menu = document.getElementById('menu');
+
         toggle.onclick=function(){
             toggle.classList.toggle('active');
             body.classList.toggle('active');
+            footer.classList.toggle('active');
+            menu.classList.toggle('active');
         }
     </script>
 </body>
