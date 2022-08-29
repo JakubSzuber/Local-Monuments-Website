@@ -6,24 +6,34 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/919/919853.png">
     <title>{% block title %} {% endblock %}- FlaskApp</title>
 
+    <!-------------- Style -------------->
     <style>
         body {
-                margin: 0 auto;
-                color: white;
-                background-color: #202124;
-                background-position:center;
-                background-size: contain;
-                text-align: center;
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                transition: 0.5s;
-            }
+            margin: 0 auto;
+            color: white;
+            background-color: #202124;
+            background-position:center;
+            background-size: contain;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            transition: 0.5s;
+        }
 
         body.active {
             background-color: whitesmoke;
             color: black;
         }
 
+        p {
+            padding-right: 20px;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
         .menu {
+            z-index: 12;
             position: sticky;
             top: 0;
             background-color: #282A35;
@@ -33,7 +43,7 @@
         }
 
         .menu.active {
-        background-color: #222425;
+            background-color: #222425;
         }
 
         .menu a {
@@ -52,17 +62,17 @@
 
         section {
             margin-left:20px;
+            font-size: 20px;
         }
 
         footer {
+            position: relative;
             width: 100%;
-            height: 6%;
-            bottom: 0px;
+            bottom: 0;
             background-color: #181a1e;
             color: #fff;
-            position: absolute;
-            /*padding-top:3px;*/
-            /*padding-bottom:0px;*/
+            padding-top:3px;
+            padding-bottom:12px;
             text-align:center;
             font-size:12px;
         }
@@ -83,8 +93,8 @@
         }
 
         #toggle {
-            position: absolute;
-            top: 2%;
+            position:absolute;
+            top: 25%;
             left: 93%;
             display:block;
             width:80px;
@@ -127,23 +137,25 @@
                         inset 4px 4px rgba(255,255,255,1)
                         inset -4px 4px rgba(255,255,255,1);
         }
+
         {% block style %}{% endblock %}
 </style>
 </head>
 
 <body>
     <!-- Menu Navigation Bar -->
-    <nav class="menu">
+    <header class="menu">
         <a href="{{ url_for('about_page') }}">About</a>
         <a id="home" href="{{ url_for('home_page') }}">Home</a>
         <a href="{{ url_for('gallery_page') }}">Gallery</a>
-    </nav>
 
-    <!-- Body content section -->
-    <section>
         <div id="toggle">
             <i class="indicator"></i>
         </div>
+    </header>
+
+    <!-- Body content section -->
+    <section>
         {% block content %} {% endblock %}
     </section>
 
@@ -166,6 +178,7 @@
             footer.classList.toggle('active');
             menu.classList.toggle('active');
         }
+
         {% block script %} {% endblock %}
     </script>
 </body>
