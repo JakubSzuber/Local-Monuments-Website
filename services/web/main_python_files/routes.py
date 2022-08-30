@@ -8,11 +8,11 @@ from flask import Flask, render_template
 def home_page():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM books;')
-    books = cur.fetchall()
+    cur.execute('SELECT * FROM monuments;')
+    monuments = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('home.html', books=books)
+    return render_template('home.html', monuments=monuments)
 
 @app.route('/about')
 def about_page():
