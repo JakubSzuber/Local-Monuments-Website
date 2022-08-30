@@ -12,7 +12,7 @@ services:
 
   web:
     container_name: web
-    image: flask_appp
+    image: flask_app
     restart: always
     ports:
       - 5000:5000

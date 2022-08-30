@@ -22,9 +22,9 @@ cur = conn.cursor()
 # Execute a command: this creates a new table
 cur.execute('DROP TABLE IF EXISTS monuments;')
 cur.execute('CREATE TABLE monuments (id serial PRIMARY KEY,'
-                                 'name varchar (20) NOT NULL,'
+                                 'name varchar (40) NOT NULL,'
                                  'description varchar (10000) NOT NULL,'
-                                 'image_path varchar(50) NOT NULL);'
+                                 'image_path varchar(200) NOT NULL);'
                                  )
 
 # Insert data into the table
