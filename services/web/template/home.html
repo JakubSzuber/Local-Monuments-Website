@@ -56,11 +56,12 @@
 
     /* Number text (1/3 etc) */
     .numbertext {
-        color: #f2f2f2;
+        color: black;
         font-size: 12px;
         padding: 8px 12px;
         position: absolute;
         top: 1%;
+        left: 25%;
     }
 
     /* The dots/bullets/indicators */
@@ -109,40 +110,39 @@
     @media only screen and (max-width: 500px) {
     .prev, .next,.text {font-size: 14px}
     }
+
 {% endblock %}
 
 {% block content %}
-<div class="slideshow-container" xmlns="http://www.w3.org/1999/html">
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="https://pic-bstarstatic.akamaized.net/ugc/212faa74fa21c99b0cba5a2f00f2e8271fdd8b45.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRje1om73xAhunue2qKOyekbKJIbv3tDrp9R9GCqmd_c9kqsfk6k-Gm8-XKwRYe0SyWMEY&usqp=CAU" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="https://images.theconversation.com/files/457052/original/file-20220408-15-pl446k.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1000&fit=clip" style="width:100%">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <div class="slideshow-container" xmlns="http://www.w3.org/1999/html">
+         {% for monument in monuments %}
+            <div class='mySlides fade'>
+                <div class="numbertext">{{ monument[0] }} / 9</div>
+                <img src="{{ monument[3] }}" alt="Monument">
+
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                        <span class="dot" onclick="currentSlide(7)"></span>
+                        <span class="dot" onclick="currentSlide(8)"></span>
+                        <span class="dot" onclick="currentSlide(9)"></span>
+                        <!-- move style parts !!! -->
+                    </div>
+
+                <h1>#{{ monument[0] }} {{ monument[1] }}</h1>
+                <p>(    Description - {{ monument[2] }})</p>
+            </div>
+        {% endfor %}
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-        <span class="dot" onclick="currentSlide(6)"></span>
-        <span class="dot" onclick="currentSlide(7)"></span>
-        <span class="dot" onclick="currentSlide(8)"></span>
-        <span class="dot" onclick="currentSlide(9)"></span>
-        <!-- move style parts !!! -->
-    </div>
 
-    <h1> Kolegiata najswietszej maryji manny </h1>
+
     <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
     <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
     <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
@@ -159,15 +159,6 @@
     <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
     <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
 
-    <h1> Query </h1>
-    {% for monument in monuments %}
-        <div class='monument'>
-            <h3>#{{ monument[0] }} {{ monument[1] }}</h3>
-            <i><p>(description - {{ monument[2] }})</p></i>
-            <img src="{{ monument[3] }}" alt="Monument">
-            <h1>DZIALA JESTES W HOME</h1>
-        </div>
-    {% endfor %}
 {% endblock %}
 
 {% block script %}
