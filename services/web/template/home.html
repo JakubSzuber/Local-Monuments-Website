@@ -41,11 +41,13 @@
 
     /* Position the "next button" to the right */
     .prev {
-        left: 0;
+        left: 5%;
+        top: 35%;
     }
 
     .next {
-        right: 0;
+        right: 5%;
+        top: 35%;
         border-radius: 3px 0 0 3px;
     }
 
@@ -75,7 +77,7 @@
         display: inline-block;
         transition: background-color 0.6s ease;
         position: relative;
-        top: 18px;
+        top: -170px;
     }
 
     .active, .dot:hover {
@@ -120,23 +122,25 @@
                 <div class="numbertext">{{ monument[0] }} / 9</div>
                 <img src="{{ monument[3] }}" alt="Monument">
 
-                    <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                        <span class="dot" onclick="currentSlide(6)"></span>
-                        <span class="dot" onclick="currentSlide(7)"></span>
-                        <span class="dot" onclick="currentSlide(8)"></span>
-                        <span class="dot" onclick="currentSlide(9)"></span>
-                        <!-- move style parts !!! -->
-                    </div>
+
 
                 <h1>#{{ monument[0] }} {{ monument[1] }}</h1>
                 <p>(    Description - {{ monument[2] }})</p>
             </div>
         {% endfor %}
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+            </div>
+
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
