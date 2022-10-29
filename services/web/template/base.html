@@ -33,6 +33,7 @@
         }
 
         .menu {
+            transition: 0.7s;
             z-index: 12;
             position: sticky;
             top: 0;
@@ -58,6 +59,10 @@
             color: pink;
             text-decoration: underline;
             font-weight: bold;
+        }
+
+        .menu.transparent {
+            opacity: 0.7;
         }
 
         section {
@@ -144,7 +149,7 @@
 
 <body>
     <!-- Menu Navigation Bar -->
-    <header class="menu">
+    <header class="menu" id="header-menu">
         <a href="{{ url_for('about_page') }}">About</a>
         <a id="home" href="{{ url_for('home_page') }}">Home</a>
         <a href="{{ url_for('gallery_page') }}">Gallery</a>
@@ -178,6 +183,15 @@
             footer.classList.toggle('active');
             menu.classList.toggle('active');
         }
+
+        var element = document.getElementById("header-menu")
+        document.addEventListener('scroll', (e) => {
+            if (document.documentElement.scrollTop > 50) {
+                element.classList.add("transparent");
+            } else {
+                element.classList.remove("transparent");
+            }
+        })
 
         {% block script %} {% endblock %}
     </script>
