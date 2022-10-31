@@ -23,11 +23,18 @@
         overflow: hidden;
     }
 
+    #isolated {
+        max-width: 80%;
+        position: relative;
+        margin: auto;
+        top: 30px;
+    }
+
     /* Next & previous buttons */
     .prev, .next {
         cursor: pointer;
-        position: absolute;
-        top: 50%;
+        position: relative;
+        top: -500px;
         width: auto;
         padding: 16px;
         margin-top: -22px;
@@ -41,13 +48,11 @@
 
     /* Position the "next button" to the right */
     .prev {
-        left: 5%;
-        top: 35%;
+        left: -620px;
     }
 
     .next {
-        right: 5%;
-        top: 35%;
+        right: -620px;
         border-radius: 3px 0 0 3px;
     }
 
@@ -113,88 +118,71 @@
     .prev, .next,.text {font-size: 14px}
     }
 
-    /*p {
-        all: initial;
-    }*/
+    .slideshow-container p {
+        position: relative;
+        top: -40px;
+    }
 
 {% endblock %}
 
 {% block content %}
-    <div class="slideshow-container" xmlns="http://www.w3.org/1999/html">
+    <div class="slideshow-container">
          {% for monument in monuments %}
             <div class='mySlides fade'>
                 <div class="numbertext">{{ monument[0] }} / 9</div>
                 <img src="{{ monument[7] }}" alt="Monument">
                 <h1>#{{ monument[0] }} {{ monument[1] }}</h1>
-                <!--
+
+                <div id="isolated">
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                        <span class="dot" onclick="currentSlide(7)"></span>
+                        <span class="dot" onclick="currentSlide(8)"></span>
+                        <span class="dot" onclick="currentSlide(9)"></span>
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+
                 <p>{{ monument[2] }}</p>
                 <p>{{ monument[3] }}</p>
                 <p>{{ monument[4] }}</p>
                 <p>{{ monument[5] }}</p>
-                <p>{{ monument[6] }}</p>-->
+                <p>{{ monument[6] }}</p>
             </div>
-        {% endfor %}
-
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span>
-                <span class="dot" onclick="currentSlide(6)"></span>
-                <span class="dot" onclick="currentSlide(7)"></span>
-                <span class="dot" onclick="currentSlide(8)"></span>
-                <span class="dot" onclick="currentSlide(9)"></span>
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+         {% endfor %}
     </div>
-    <br>
-
-
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-    <p> &emsp; Since ragdolls don’t have an undercoat, the amount of shedding and dander production is lower than that of heavier coated breeds. However, many people are still allergic to saliva and skin secretions from cats, and ragdolls produce these allergens, so they are not considered hypoallergenic. The ragdoll has a silky single coat (meaning that it doesn’t have an under-layer of fur). It’s meant to be lower-matting than other medium-haired cat coats. This breed still benefits from brushing at least twice a week to help avoid tangles. </p>
-
-
 
 {% endblock %}
 
 {% block script %}
     var slideIndex = 1;
-        showSlides(slideIndex);
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+    showSlides(slideIndex);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
 {% endblock %}
