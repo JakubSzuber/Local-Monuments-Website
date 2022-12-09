@@ -72,6 +72,7 @@ dodaj "drzewo glownego folderu" na repozytorium
 dodaj zdjecia z docker desktop albo konsoli ze co powinno byc widac jesli kontener poprawnie chodzi
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
 dodaj do moich cutom images health check?
+do zakladni used tools dodaj nginx
 
 ```mermaid
 C4Context
