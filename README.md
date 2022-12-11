@@ -23,7 +23,12 @@ docker exec -it web python main_python_files/init_db.py
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
 
-# Recommended methods:
+# Recommended method:
+## Docker Compose
+
+To run app with compose file you have to create directory wherever you want and then clone from that repo...docker-compose up -d if...ordocker-compose up
+
+# Other methods:
 ## Docker commands
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
 Run your nginx proxy server by this command:
@@ -41,12 +46,6 @@ Run your postgres database by this command
 docker container run --name flask-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
 ```
 
-
-## Docker Compose
-
-To run app with compose file you have to create directory wherever you want and then clone from that repo...docker-compose up -d if...ordocker-compose up
-
-# Other methods:
 ## Docker Swarm commands
 xxx
 
