@@ -6,6 +6,7 @@
 {% block style %}
     .mySlides {
         display: none
+        z-index: 0;
     }
 
     img {
@@ -25,16 +26,17 @@
 
     #isolated {
         max-width: 80%;
-        position: relative;
+        position: absolute;
         margin: auto;
-        top: 30px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
     }
 
     /* Next & previous buttons */
     .prev, .next {
         cursor: pointer;
         position: relative;
-        top: -500px;
         width: auto;
         padding: 16px;
         margin-top: -22px;
@@ -42,23 +44,30 @@
         font-weight: bold;
         font-size: 18px;
         transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
+        border-radius: 25px;
         user-select: none;
+        background-color: rgb(28, 28, 28);
     }
 
     /* Position the "next button" to the right */
     .prev {
         left: -620px;
+        top: 300px;
     }
 
     .next {
         right: -620px;
-        border-radius: 3px 0 0 3px;
+        top: 300px;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
+    /* On hover, add a black background color with a little see-through */
     .prev:hover, .next:hover {
         background-color: rgba(0,0,0,0.8);
+    }
+
+    /* TESTOWIEC TESTYYYYYYY !!! */
+    .prev.active, .next.active {
+        background-color: rgba(70,70,70);
     }
 
     /* Number text (1/3 etc) */
@@ -69,6 +78,7 @@
         position: absolute;
         top: 1%;
         left: 25%;
+        overflow: hidden;
     }
 
     /* The dots/bullets/indicators */
@@ -82,7 +92,7 @@
         display: inline-block;
         transition: background-color 0.6s ease;
         position: relative;
-        top: -170px;
+        top: 620px;
     }
 
     .active, .dot:hover {
@@ -122,34 +132,34 @@
         position: relative;
         top: -40px;
     }
-
 {% endblock %}
 
 {% block content %}
+    <div id="isolated">
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+            <span class="dot" onclick="currentSlide(9)"></span>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
     <div class="slideshow-container">
          {% for monument in monuments %}
             <div class='mySlides fade'>
                 <div class="numbertext">{{ monument[0] }} / 9</div>
                 <img src="{{ monument[7] }}" alt="Monument">
+                <br><br>
                 <h1>#{{ monument[0] }} {{ monument[1] }}</h1>
-
-                <div id="isolated">
-                    <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                        <span class="dot" onclick="currentSlide(6)"></span>
-                        <span class="dot" onclick="currentSlide(7)"></span>
-                        <span class="dot" onclick="currentSlide(8)"></span>
-                        <span class="dot" onclick="currentSlide(9)"></span>
-                    </div>
-
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                </div>
-
+                <br>
                 <p>{{ monument[2] }}</p>
                 <p>{{ monument[3] }}</p>
                 <p>{{ monument[4] }}</p>
@@ -158,18 +168,22 @@
             </div>
          {% endfor %}
     </div>
-
 {% endblock %}
 
 {% block script %}
+
     var slideIndex = 1;
+
     showSlides(slideIndex);
+
     function plusSlides(n) {
         showSlides(slideIndex += n);
     }
+
     function currentSlide(n) {
         showSlides(slideIndex = n);
     }
+
     function showSlides(n) {
         var i;
         var slides = document.getElementsByClassName("mySlides");
@@ -185,4 +199,6 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
     }
+
+
 {% endblock %}
