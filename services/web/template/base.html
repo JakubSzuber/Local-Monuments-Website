@@ -25,6 +25,16 @@
 
         }
 
+        #github{
+            width: 55px;
+            opacity: 0.85;
+            border-width: 0px;border:0px;
+            border-radius: 25px;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+        }
+
         p {
             padding-right: 20px;
         }
@@ -151,6 +161,11 @@
 <body>
     <!-- Menu Navigation Bar -->
     <header class="menu" id="header-menu">
+
+        <a href="https://github.com/JakubSzuber/Local-Monuments-Website">
+            <img id="github" src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="github-img" title="github">
+        </a>
+
         <a href="{{ url_for('about_page') }}">About</a>
         <a id="home" href="{{ url_for('home_page') }}">Home</a>
         <a href="{{ url_for('gallery_page') }}">Gallery</a>
@@ -173,6 +188,15 @@
 
     <!-- JavaScript code -->
     <script>
+        var element = document.getElementById("header-menu")
+        document.addEventListener('scroll', (e) => {
+            if (document.documentElement.scrollTop > 50) {
+                element.classList.add("transparent");
+            } else {
+                element.classList.remove("transparent");
+            }
+        })
+
         const body = document.querySelector('body');
         const toggle = document.getElementById('toggle');
         const footer = document.querySelector('footer');
@@ -184,15 +208,6 @@
             footer.classList.toggle('active');
             menu.classList.toggle('active');
         }
-
-        var element = document.getElementById("header-menu")
-        document.addEventListener('scroll', (e) => {
-            if (document.documentElement.scrollTop > 50) {
-                element.classList.add("transparent");
-            } else {
-                element.classList.remove("transparent");
-            }
-        })
 
         {% block script %} {% endblock %}
     </script>
