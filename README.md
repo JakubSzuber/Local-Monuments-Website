@@ -38,12 +38,12 @@ docker container run --name nginx-server --network flask_network -p 80:80 custom
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker container run --name web -p 5000:5000 --network flask_network flask_app
+docker container run --name gunicorn-server -p 5000:5000 --network flask_network flask_app
 ```
 
 Run your postgres database by this command
 ```shell
-docker container run --name flask-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
+docker container run --name postgres-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
 ```
 
 ## Docker Swarm commands
@@ -61,10 +61,48 @@ xxx
 ## Docker Declarative objects
 xxx
 
+# How to run app
+Depends of method xxx
+
+<details><summary>Text source</summary>
+
+https://pl.wikipedia.org/wiki/Kolegiata_Naj%C5%9Bwi%C4%99tszej_Maryi_Panny_Kr%C3%B3lowej_%C5%9Awiata_w_Stargardzie
+https://www.pomorzezachodnie.travel/Zaplanuj_pobyt-Przydatne_informacje-Miejsca_kultu_religijnego-Kosciol_Rzymskokatolicki/a,4146/Kosciol_pw_sw_Jana_Chrzciciela
+https://pl.wikipedia.org/wiki/Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Jana_w_Stargardzie
+https://pl.wikipedia.org/wiki/Brama_Pyrzycka_w_Stargardzie
+https://pomorzezachodnie.travel/Poznawaj-Dziedzictwo_Pomorza-Fortyfikacje_i_militaria-Obwarowania_miejskie/a,6195/Brama_Pyrzycka
+https://sciaga.pl/tekst/51768-52-stargardzkie_zabytki_brama_pyrzycka
+https://pl.wikipedia.org/wiki/Brama_Wa%C5%82owa
+https://pomorzezachodnie.travel/Spedzaj_czas-Kulturalnie-Galerie/a,5123/Brama_Walowa
+https://pl.wikipedia.org/wiki/Brama_M%C5%82y%C5%84ska_w_Stargardzie
+http://baza-turystyczna.eu/wojewodztwo-zachodnio-pomorskie--4/miasto-stargard_szczecinski--66/zabytki/obiekt-brama_portowa_mlynska--120/
+https://pl.wikipedia.org/wiki/Wie%C5%BCa_ci%C5%9Bnie%C5%84
+http://baza-turystyczna.eu/wojewodztwo-zachodnio-pomorskie--4/miasto-stargard_szczecinski--66/zabytki/obiekt-wieza_cisnien--118/
+https://pl.wikipedia.org/wiki/Wie%C5%BCa_ci%C5%9Bnie%C5%84_w_Stargardzie
+https://www.wikiwand.com/pl/Wie%C5%BCa_ci%C5%9Bnie%C5%84_w_Stargardzie
+https://pomorzezachodnie.travel/Poznawaj-Dziedzictwo_Pomorza-Zabytki_techniki_i_inzynierii/a,6197/Wieza_cisnien
+https://pl.wikipedia.org/wiki/Baszta
+https://pl.wikipedia.org/wiki/Baszta_Morze_Czerwone
+https://pomorzezachodnie.travel/Poznawaj-Dziedzictwo_Pomorza-Fortyfikacje_i_militaria-Obwarowania_miejskie/a,6196/Baszta_Morze_Czerwone
+https://tropter.com/pl/polska/stargard/baszta-morze-czerwone
+https://pl.wikipedia.org/wiki/Baszta_Bia%C5%82og%C5%82%C3%B3wka
+https://www.polska.travel/pl/muzea/baszta-bialoglowka
+https://pl.wikipedia.org/wiki/Ratusz_w_Stargardzie
+https://pomorzezachodnie.travel/Zaplanuj_pobyt-Przydatne_informacje-Urzedy_publiczne/a,2763/Urzad_Miasta_Stargard_Ratusz_Staromiejski_
+https://zabytek.pl/pl/obiekty/stargard-ratusz)
+
+Links to each used image is in the file [init_db.py](https://github.com/JakubSzuber/Local-Monuments-Website/blob/main/services/web/main_python_files/init_db.py)
+ 
+</details>
 
 
-<br>
-<br>
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 todo:
 
 dodaj "drzewo glownego folderu" na repozytorium
