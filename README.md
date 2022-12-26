@@ -64,7 +64,7 @@ xxx
 # How to run app
 Depends of method xxx
 
-<details><summary>Images and text source</summary>
+<details><summary>Text source</summary>
 
 https://pl.wikipedia.org/wiki/Kolegiata_Naj%C5%9Bwi%C4%99tszej_Maryi_Panny_Kr%C3%B3lowej_%C5%9Awiata_w_Stargardzie
 https://www.pomorzezachodnie.travel/Zaplanuj_pobyt-Przydatne_informacje-Miejsca_kultu_religijnego-Kosciol_Rzymskokatolicki/a,4146/Kosciol_pw_sw_Jana_Chrzciciela
@@ -91,6 +91,8 @@ https://pl.wikipedia.org/wiki/Ratusz_w_Stargardzie
 https://pomorzezachodnie.travel/Zaplanuj_pobyt-Przydatne_informacje-Urzedy_publiczne/a,2763/Urzad_Miasta_Stargard_Ratusz_Staromiejski_
 https://zabytek.pl/pl/obiekty/stargard-ratusz)
 
+Links to each used image is in the file [init_db.py](https://github.com/JakubSzuber/Local-Monuments-Website/blob/main/services/web/main_python_files/init_db.py)
+ 
 </details>
 
 
