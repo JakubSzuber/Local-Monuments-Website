@@ -25,7 +25,6 @@
         border-radius: 20px;
     }
 
-
     /* The grid: Four equal columns that floats next to each other */
     .column {
         float: left;
@@ -37,7 +36,6 @@
     .column img {
         opacity: 0.8;
         cursor: pointer;
-
     }
 
     .column img:hover {
@@ -78,7 +76,7 @@
         top: 0;
         left: 190%;
         margin-top: 1vw;
-        color: white;
+        color: black;
         font-size: 45px;
         cursor: pointer;
     }
@@ -111,40 +109,18 @@
 
 {% block content %}
     <div id="desciption">
-        <h2>Lorem ipsum dolor sit amet consectetur</h2>
-        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati.</h4>
+        <h2>Images of each monument that is stored in the database</h2>
+        <h4>Whether it's a towering statue of a historical figure, a grand temple dedicated to deity, or a simple memorial to honor those who have passed, these structures have a way of capturing our attention and inspiring a sense of awe and wonder. So, we should always try to preserve and appreciate beautiful monuments.</h4>
     </div>
 
     <div id="gallery">
         <hr><br>
         <div class="row">
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-                <img src="https://lirp.cdn-website.com/2e0acc00/dms3rep/multi/opt/tro-C4-87_w-C4-99drowna-54c18ed8-1920w.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-            </div>
+            {% for monument in monuments %}
+                <div class="column">
+                    <img src="{{ monument[7] }}" alt="{{ monument[1] }}" style="width:100%" onclick="myFunction(this);">
+                </div>
+            {% endfor %}
         </div>
 
         <div class="overlay">

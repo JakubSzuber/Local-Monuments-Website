@@ -20,4 +20,10 @@ def about_page():
 
 @app.route('/gallery')
 def gallery_page():
-    return render_template('gallery.html')
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM monuments;')
+    monuments = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('gallery.html', monuments=monuments)
