@@ -38,12 +38,12 @@ docker container run --name nginx-server --network flask_network -p 80:80 custom
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker container run --name web -p 5000:5000 --network flask_network flask_app
+docker container run --name gunicorn-server -p 5000:5000 --network flask_network flask_app
 ```
 
 Run your postgres database by this command
 ```shell
-docker container run --name flask-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
+docker container run --name postgres-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
 ```
 
 ## Docker Swarm commands
