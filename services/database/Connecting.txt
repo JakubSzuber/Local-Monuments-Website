@@ -9,3 +9,5 @@ admin
 
 4. Now you're into year postgreSQL database called "flask_db" and you can use postgres commands for it
 SELECT * FROM monuments;
+
+# To exit the postgres interface type "exit"
