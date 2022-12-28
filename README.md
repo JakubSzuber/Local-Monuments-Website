@@ -165,4 +165,4 @@ https://user-images.githubusercontent.com/1161307/171013513-95f18734-233d-45d3-a
 ![](https://www.contrastsecurity.com/hs-fs/hubfs/images/DevOps%20Solutions/devops-old-way.gif?width=1322&name=devops-old-way.gif)
 
 ![image](https://user-images.githubusercontent.com/90647840/209741199-e433f15f-7473-4e12-8705-b3c049ba8bd7.png)
-todoxxxxafter launching all containers you should see in Docker Desktop containers list that every conatiner is running successively. Now you can click on whatever container to see information about it's image layers or enter the container's inspection, terminal, logs or stats.
+todoxxxxafter launching all containers you should see in Docker Desktop containers list similar view to above what means that every conatiner is running successively. Now you can click on whatever container to see information about it's image layers or enter the container's inspection, terminal, logs or stats.
