@@ -17,7 +17,7 @@ This project is containerized web application created form scratch. Whole applic
 > **Note**
 > If you will see error: "Internal Server Error" in browser that means you have to additionally use below command after run your containers:
 ```
-docker exec -it web python main_python_files/init_db.py
+docker exec -it gunicorn-server python main_python_files/init_db.py
 ```
 
 ## Requirments
