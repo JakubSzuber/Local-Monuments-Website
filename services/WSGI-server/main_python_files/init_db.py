@@ -2,13 +2,6 @@ import os
 import sys
 import psycopg2
 
-'''
-def readImage():
-        fin = open('./download.jpg', "rb")
-        img = fin.read()
-        fin.close()
-        return img
-'''
 conn = psycopg2.connect(
         host="flask-database",  # Tutaj moze byc: localhost albo flask-database
         database="flask_db",
