@@ -21,7 +21,7 @@ docker exec -it gunicorn-server python main_python_files/init_db.py
 ```
 
 ## Requirments
-Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/).
+Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/). If you already have a Docker you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched.
 
 # Recommended method:
 ## Docker Compose
