@@ -1,1 +1,8 @@
 todo: napisz tutaj instukcje jak przez CLI polaczyc sie do bazy danych i wyswietlic jeje zawartosci
+
+---------------------------------------- How to connect too your contenerized postgres database ----------------------------------------
+# Windows:
+# Enter your CLI and xx
+psql -U admin
+>admin
+
