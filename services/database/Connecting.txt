@@ -1,8 +1,11 @@
-todo: napisz tutaj instukcje jak przez CLI polaczyc sie do bazy danych i wyswietlic jeje zawartosci
-
 ---------------------------------------- How to connect too your contenerized postgres database ----------------------------------------
-# Windows:
-# Enter your CLI and xx
-psql -U admin
->admin
+1. Enter your CLI
 
+2. Connect to your postgres container "postgres-database" that runs on host "flask-database" and have database "flask_db" as a "admin" user
+docker exec -it postgres-database psql -h flask-database -d flask_db -U admin
+
+3. Enter password
+admin
+
+4. Now you're into year postgreSQL database called "flask_db" and you can use postgres commands for it
+SELECT * FROM monuments;
