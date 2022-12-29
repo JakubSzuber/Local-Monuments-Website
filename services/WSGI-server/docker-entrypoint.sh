@@ -12,11 +12,12 @@ function description(){
   tree .
   echo "List of pip packages used for this app:"
   pip list
+  python main_python_files/init_db.py
 }
 
 if [ ! -d $RIGHT_WORKDIR ]; then
   echo "ERROR: No right working directory $RIGHT_WORKDIR"
-  echo "xxx.."
+  echo "Check if the Dockerfile of current container create new directory $RIGHT_WORKDIR correctly"
   exit $ERROR_NO_APP_WORKDIR
 fi
 

@@ -2,7 +2,10 @@ FROM python:3.11-alpine
 
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /app; \
+RUN addgroup -g 1000 python \
+      && adduser -u 1000 -G python -s /bin/sh -D python;  \
+    mkdir /app \
+      && chown -R node:node /app; \
     apk update; \
     apk add --no-cache bash; \
     apk add --no-cache tree
@@ -18,6 +21,8 @@ COPY docker-entrypoint.sh /usr/local/bin
 COPY . /app
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
+
+USER python:python
 
 EXPOSE 5000
 
