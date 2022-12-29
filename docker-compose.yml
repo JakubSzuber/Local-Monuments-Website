@@ -8,9 +8,9 @@ services:
     ports:
       - 80:80
     depends_on:
-      - web
+      - wsgi-server
 
-  web:
+  wsgi-server:
     container_name: gunicorn-server
     image: flask_appp
     restart: always
@@ -21,7 +21,7 @@ services:
 
   flask-database:
     container_name: postgres-database
-    image: postgres:15-alpine
+    image: custom-postgres
     ports:
       - 5432:5432
     environment:
