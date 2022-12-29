@@ -15,7 +15,7 @@ This project is containerized web application created form scratch. Whole applic
 
 # How to run app
 > **Note**
-> If you will see error: "Internal Server Error" in browser that means you have to additionally use below command after run your containers:
+> If you will see error: "Internal Server Error" in browser that means you have to additionally use below command after launching your containers in order to create a table into postgres database and fill it with values:
 ```
 docker exec -it gunicorn-server python main_python_files/init_db.py
 ```
