@@ -11,6 +11,22 @@ This project is containerized web application created form scratch. Whole applic
 <br>
 *Other tools:* `Kubernetes`, `Docker Compose`, `Docker Swarm`
 
+# Stack
+- Python
+- Django
+- Psycopg2
+- PostgreSQL
+- Docker
+- Docker Compose
+- Docker Swarm Stack
+- Kubernetes
+- Nginx
+- Bash
+- Linux
+- Git
+- Gunicorn WSGI server
+- Web Lanuages (HTML, CSS, JavaScript)
+
 # Project structure
 ```$ tree Local-Monuments-Website
 .
