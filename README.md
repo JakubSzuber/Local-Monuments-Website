@@ -15,10 +15,7 @@ This project is containerized web application created form scratch. Whole applic
 
 # How to run app
 > **Note**
-> If you will see error: "Internal Server Error" in browser that means you have to additionally use below command after run your containers:
-```
-docker exec -it gunicorn-server python main_python_files/init_db.py
-```
+> xxx
 
 ## Requirments
 Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/). If you already have a Docker you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched (every container use lightweight versions of the images to reduce memory and time while building them, and reduce vulnerabilities).
