@@ -11,6 +11,28 @@ This project is containerized web application created form scratch. Whole applic
 <br>
 *Other tools:* `Kubernetes`, `Docker Compose`, `Docker Swarm`
 
+Project structure
+```$ tree Local-Monuments-Website
+.
+├───.idea
+│   └───...
+├───.git
+│   └───...
+├───docker-compose.yml
+├───README.md
+└───services
+    ├───database
+    │   ├───Connectin.txt
+    |   └───Dockerfile
+    ├───proxy-server
+    │   ├───conf
+    |   └───Dockerfile
+    └───WSGI-server
+        ├───main_python_files
+        └───template
+        TODO
+```
+
 ---
 
 # How to run app
