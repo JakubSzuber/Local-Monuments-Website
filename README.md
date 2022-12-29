@@ -11,7 +11,7 @@ This project is containerized web application created form scratch. Whole applic
 <br>
 *Other tools:* `Kubernetes`, `Docker Compose`, `Docker Swarm`
 
-Project structure
+# Project structure
 ```$ tree Local-Monuments-Website
 .
 ├───.idea
