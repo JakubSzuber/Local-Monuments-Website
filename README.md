@@ -22,15 +22,26 @@ Project structure
 ├───README.md
 └───services
     ├───database
-    │   ├───Connectin.txt
+    │   ├───Connecting.txt
     |   └───Dockerfile
     ├───proxy-server
     │   ├───conf
     |   └───Dockerfile
     └───WSGI-server
-        ├───main_python_files
-        └───template
-        TODO
+        ├── Dockerfile
+        ├── docker-entrypoint.sh
+        ├── main_python_files
+        │   ├── __init__.py
+        │   ├── config.py
+        │   ├── init_db.py
+        │   └── routes.py
+        ├── requirements.txt
+        ├── run.py
+        └── template
+            ├── about.html
+            ├── base.html
+            ├── gallery.html
+            └── home.html
 ```
 
 ---
