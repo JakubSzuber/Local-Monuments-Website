@@ -1,24 +1,6 @@
 version: '3.7'
 
 services:
-  proxy-server:
-    container_name: nginx-server
-    image: custom-nginx
-    restart: always
-    ports:
-      - 80:80
-    depends_on:
-      - wsgi-server
-
-  wsgi-server:
-    container_name: gunicorn-server
-    image: flask_appp
-    restart: always
-    ports:
-      - 5000:5000
-    depends_on:
-      -   flask-database
-
   flask-database:
     container_name: postgres-database
     image: custom-postgres
@@ -30,6 +12,24 @@ services:
       - POSTGRES_DB=flask_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  wsgi-server:
+    container_name: gunicorn-server
+    image: flask_appp
+    restart: always
+    ports:
+      - 5000:5000
+    depends_on:
+      -   flask-database
+
+  proxy-server:
+    container_name: nginx-server
+    image: custom-nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - wsgi-server
 
 volumes:
   postgres_data: {}
