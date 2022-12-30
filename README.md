@@ -11,6 +11,55 @@ This project is containerized web application created form scratch. Whole applic
 <br>
 *Other tools:* `Kubernetes`, `Docker Compose`, `Docker Swarm`
 
+# Stack
+- Python
+- Django
+- Psycopg2
+- PostgreSQL
+- Docker
+- Docker Compose
+- Docker Swarm Stack
+- Kubernetes
+- Nginx
+- Bash
+- Linux
+- Git
+- Gunicorn WSGI server
+- Web Lanuages (HTML, CSS, JavaScript)
+
+# Project structure
+```$ tree Local-Monuments-Website
+.
+├───.idea
+│   └───...
+├───.git
+│   └───...
+├───docker-compose.yml
+├───README.md
+└───services
+    ├───database
+    │   ├───Connecting.txt
+    |   └───Dockerfile
+    ├───proxy-server
+    │   ├───conf
+    |   └───Dockerfile
+    └───WSGI-server
+        ├── Dockerfile
+        ├── docker-entrypoint.sh
+        ├── main_python_files
+        │   ├── __init__.py
+        │   ├── config.py
+        │   ├── init_db.py
+        │   └── routes.py
+        ├── requirements.txt
+        ├── run.py
+        └── template
+            ├── about.html
+            ├── base.html
+            ├── gallery.html
+            └── home.html
+```
+
 ---
 
 # How to run app
@@ -30,17 +79,17 @@ To run app with compose file you have to create directory wherever you want and 
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
 Run your nginx proxy server by this command:
 ```shell
-docker container run --name nginx-server --network flask_network -p 80:80 JakubSzuber/custom-nginx
+docker container run -d --name nginx-server --network flask_network -p 80:80 JakubSzuber/custom-nginx
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker container run --name gunicorn-server -p 5000:5000 --network flask_network JakubSzuber/custom-gunicorn
+docker container run -d --name gunicorn-server -p 5000:5000 --network flask_network JakubSzuber/custom-gunicorn
 ```
 
 Run your postgres database by this command
 ```shell
-docker container run --name postgres-database -d --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
+docker container run -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
 ```
 
 ## Docker Swarm commands
@@ -58,8 +107,6 @@ xxx
 ## Docker Declarative objects
 xxx
 
-# How to run app
-Depends of method xxx
 
 <details><summary>Text source</summary>
 
