@@ -45,6 +45,8 @@ This project is containerized web application created form scratch. Whole applic
     |   └───Dockerfile
     └───WSGI-server
         ├── Dockerfile
+        ├── .dockerignore
+        ├── infrastructure.png
         ├── docker-entrypoint.sh
         ├── main_python_files
         │   ├── __init__.py
