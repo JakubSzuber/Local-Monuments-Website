@@ -4,15 +4,45 @@
 {% block title %} About {% endblock %}
 
 {% block style %}
-      body {
-          /**/
-      }
+    img:not(#github) {
+        position: relative;
+        border-radius: 40px;
+        padding: 30px;
+        left: 390px;
+    }
+
+    #infra-describe {
+        height: auto;
+        width: 42%;
+        position: absolute;
+        top: 100px;
+        text-align: left;
+        left: 40px;
+    }
 {% endblock %}
 
 {% block content %}
-    <h1>jestes w about</h1>
+    <div id="infra-describe">
+            <h3>Note</h3>
+            <p>This application purpose is not be a ready-to-use working application to use on the Internet, its rather the example core Infrastructure of how the contenerized website should look like, so this app doesn't contain a few required security features like e.g. TLS if this app would be created to be on the Internet.</p>
+            <p>Normally if this application was designed to be hosted on your local computer to the globally use then a user would send a HTTPS request to the Nginx and then wait to response.</p>
+
+            <h3>1. Creatin </h3>
+            <p>siema enter a websenter a websenter a webs</p>
+
+            <h3>2. If the  enter a website by </h3>
+            <p>siema enter a websenter a websenter a webs</p>
+
+            <h3>3. If the  enter a website by </h3>
+            <p>siema enter a websenter a websenter a webs</p>
+
+            <h3>4. If the  enter a website by </h3>
+            <p>siema enter a websenter a websenter a webs</p>
+
+            <h3>5. If the  enter a website by </h3>
+            <p>siema enter a websenter a websenter a webs</p>
+        </div>
+    <img src="https://raw.githubusercontent.com/JakubSzuber/Local-Monuments-Website/main/services/WSGI-server/infrastructure.png" alt="Infrastructure">
 {% endblock %}
 
-{% block script %}
-    console.log("siema");
-{% endblock %}
+{% block script %}{% endblock %}
