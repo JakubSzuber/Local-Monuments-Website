@@ -55,11 +55,22 @@ This project is containerized web application created form scratch. Whole applic
         │   └── routes.py
         ├── requirements.txt
         ├── run.py
-        └── template
-            ├── about.html
-            ├── base.html
-            ├── gallery.html
-            └── home.html
+        └── src                    
+            ├── static
+            │   ├── css
+            │   │   ├── about.css
+            │   │   ├── base.css
+            │   │   ├── gallery.css
+            │   │   └── home.css
+            │   └── js
+            │       ├── base.js
+            │       ├── gallery.js
+            │       └── home.js
+            └── template
+                ├── about.html
+                ├── base.html
+                ├── gallery.html
+                └── home.html
 ```
 
 ---
