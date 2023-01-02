@@ -201,12 +201,9 @@ pie showData
     "Iron" :  5
 ```
 
-<details>
-<summary>Result</summary>
 
 https://user-images.githubusercontent.com/1161307/171013513-95f18734-233d-45d3-aaf5-d6aec687db0e.mov
 
-</details>
 
 ![](https://www.contrastsecurity.com/hs-fs/hubfs/images/DevOps%20Solutions/devops-old-way.gif?width=1322&name=devops-old-way.gif)
 
