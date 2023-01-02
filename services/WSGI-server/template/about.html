@@ -19,29 +19,36 @@
         text-align: left;
         left: 40px;
     }
+
+    .note{
+        color: rgb(64,119,183);
+        margin: 15px;
+    }
+
+    body.active .note{
+        color: rgb(180, 54, 54);
+        transition: 0.5s;
+    }
 {% endblock %}
 
 {% block content %}
     <div id="infra-describe">
-            <h3>Note</h3>
-            <p>This application purpose is not be a ready-to-use working application to use on the Internet, its rather the example core Infrastructure of how the contenerized website should look like, so this app doesn't contain a few required security features like e.g. TLS if this app would be created to be on the Internet.</p>
-            <p>Normally if this application was designed to be hosted on your local computer to the globally use then a user would send a HTTPS request to the Nginx and then wait to response.</p>
+            <h3 class="note">Note:</h3>
+            <p class="note">This application's purpose is not to be a ready-to-use working application to use on the Internet, it's rather the example core Infrastructure of how the containerized website should look like, so this app doesn't contain a few required security features like e.g. TLS if this app would be created to be on the Internet.</p>
+            <p class="note">Normally, if this application was designed to be hosted on your local computer for global use, then a user would send the HTTPS request to the basic Nginx or Ingress-NGINX and then wait for a response.</p>
 
-            <h3>1. Creatin </h3>
-            <p>siema enter a websenter a websenter a webs</p>
+            <h3>1. Initialization of services </h3>
+            <p>In order to set up the application, each container is launched and the necessary configurations are made, including the connection between the Postgres database and the WSGI Gunicorn server. Additionally, SQL queries are run to populate the database with initial data that will be used to display content on the Home and About pages</p>
 
-            <h3>2. If the  enter a website by </h3>
-            <p>siema enter a websenter a websenter a webs</p>
+            <h3>2. Routing the HTTP traffic by Nginx </h3>
+            <p>To manage the incoming HTTP traffic, Nginx acts as a web-reverse-proxy server, routing traffic to the application server and awaiting a response </p>
 
-            <h3>3. If the  enter a website by </h3>
-            <p>siema enter a websenter a websenter a webs</p>
+            <h3>3. Taking the traffic by Gunicorn </h3>
+            <p>Gunicorn, serving as a Web Server Gateway Interface (WSGI) application server, receives the traffic from Nginx and handles requests accordingly. If the request is for static content, Gunicorn simply sends the content back to Nginx, which then delivers it to the user </p>
 
-            <h3>4. If the  enter a website by </h3>
-            <p>siema enter a websenter a websenter a webs</p>
-
-            <h3>5. If the  enter a website by </h3>
-            <p>siema enter a websenter a websenter a webs</p>
-        </div>
+            <h3>4. Generating dynamic HTTP Content with Gunicorn and Flask </h3>
+            <p>However, if the request requires backend logic, Gunicorn works with the Flask framework to execute necessary SQL queries, select data from the Postgres database, and create dynamic website content that is returned to Nginx as the HTTP content</p>
+    </div>
     <img src="https://raw.githubusercontent.com/JakubSzuber/Local-Monuments-Website/main/services/WSGI-server/infrastructure.png" alt="Infrastructure">
 {% endblock %}
 
