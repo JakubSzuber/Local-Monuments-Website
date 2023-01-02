@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from main_python_files.config import DB

@@ -1,5 +1,3 @@
-import os
-import psycopg2
 from main_python_files import app, get_db_connection  # moze byc tu inaczej
 from flask import Flask, render_template
 
