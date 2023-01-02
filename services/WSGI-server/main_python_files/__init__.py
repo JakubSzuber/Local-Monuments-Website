@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from main_python_files.config import DB
 import psycopg2
 
-app = Flask(__name__, template_folder='../template')
+app = Flask(__name__, template_folder='../src/template', static_folder='../src/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = DB
 app.config['SECRET_KEY'] = 'ec9439cfc6c796ae2029594d'
 

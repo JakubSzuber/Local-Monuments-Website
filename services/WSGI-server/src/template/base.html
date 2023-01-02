@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/919/919853.png">
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <script type="text/javascript" src="../static/js/base.js"></script>
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
+</head>
+
+<body>
+    <!-- Menu Navigation Bar -->
+    <header class="menu" id="header-menu">
+
+        <a href="https://github.com/JakubSzuber/Local-Monuments-Website">
+            <img id="github" src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="github-img" title="github">
+        </a>
+
+        <a href="{{ url_for('about_page') }}">About</a>
+        <a id="home" href="{{ url_for('home_page') }}">Home</a>
+        <a href="{{ url_for('gallery_page') }}">Gallery</a>
+
+        <div id="toggle">
+            <i class="indicator"></i>
+        </div>
+    </header>
+
+    <!-- Body content section -->
+    <section>
+        {% block content %} {% endblock %}
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>The idea and implementation of the project was made entirely by me, and all the software used to create this application are on the GitHub repository</p>
+        <p><a href="https://github.com/JakubSzuber/Local-Monuments-Website/blob/main/README.md">(More about the project)</a></p>
+    </footer>
+
+</body>
+</html>

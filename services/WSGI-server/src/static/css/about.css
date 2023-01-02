@@ -1,0 +1,25 @@
+img:not(#github) {
+    position: relative;
+    border-radius: 40px;
+    padding: 30px;
+    left: 390px;
+}
+
+#infra-describe {
+    height: auto;
+    width: 42%;
+    position: absolute;
+    top: 100px;
+    text-align: left;
+    left: 40px;
+}
+
+.note{
+    color: rgb(64,119,183);
+    margin: 15px;
+}
+
+body.active .note{
+    color: rgb(180, 54, 54);
+    transition: 0.5s;
+}

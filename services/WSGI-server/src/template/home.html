@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block css %}<link rel="stylesheet" href="../static/css/home.css">{% endblock %}
+{% block js %}<script type="text/javascript" src="../static/js/home.js"></script>{% endblock %}
+
+{% block content %}
+    <div id="isolated">
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+            <span class="dot" onclick="currentSlide(9)"></span>
+        </div>
+
+        <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a id="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="slideshow-container">
+         {% for monument in monuments %}
+            <div class='mySlides fade'>
+                <div class="numbertext">{{ monument[0] }} / 9</div>
+                <img id="monument" src="{{ monument[7] }}" alt="Monument">
+                <br><br>
+                <h1>#{{ monument[0] }} {{ monument[1] }}</h1>
+                <br>
+                <p>{{ monument[2] }}</p>
+                <p>{{ monument[3] }}</p>
+                <p>{{ monument[4] }}</p>
+                <p>{{ monument[5] }}</p>
+                <p>{{ monument[6] }}</p>
+            </div>
+         {% endfor %}
+    </div>
+{% endblock %}
