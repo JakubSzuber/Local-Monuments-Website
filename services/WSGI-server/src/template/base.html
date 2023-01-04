@@ -6,9 +6,7 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/919/919853.png">
     <title>{% block title %} {% endblock %}- FlaskApp</title>
     <link rel="stylesheet" href="../static/css/base.css">
-    <script type="text/javascript" src="../static/js/base.js"></script>
     {% block css %}{% endblock %}
-    {% block js %}{% endblock %}
 </head>
 
 <body>
@@ -38,6 +36,9 @@
         <p>The idea and implementation of the project was made entirely by me, and all the software used to create this application are on the GitHub repository</p>
         <p><a href="https://github.com/JakubSzuber/Local-Monuments-Website/blob/main/README.md">(More about the project)</a></p>
     </footer>
+
+    <script type="text/javascript" src="../static/js/base.js"></script>
+    {% block js %}{% endblock %}
 
 </body>
 </html>
