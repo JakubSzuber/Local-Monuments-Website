@@ -38,6 +38,7 @@ This project is containerized web application created form scratch. Whole applic
 ├───docker-stack.yml
 ├───infrastructure.yml
 ├───README.md
+├───LICENSE.md
 └───services
     ├───database
     │   ├───Connecting.txt
