@@ -1,2 +1,4 @@
-# Ignore image for About page
+# Ignore files not necessary to the container's work: image for About page, Dockerfile, .dockerignore file
 *.png
+Dockerfile
+.dockerignore
