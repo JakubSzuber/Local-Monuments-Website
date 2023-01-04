@@ -106,10 +106,25 @@ docker container run -d --name postgres-database --network flask_network -e POST
 ```
 
 ## Docker Swarm commands
-xxx
+You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
+Run your nginx proxy server by this command:
+```shell
+docker service create -d --name nginx-server --network flask_network -p 80:80 JakubSzuber/custom-nginx
+```
+
+Run your main container responsible for the application logic (this container contains all necessary files) by this command:
+```shell
+docker service create -d --name gunicorn-server -p 5000:5000 --network flask_network JakubSzuber/custom-gunicorn
+```
+
+Run your postgres database by this command
+```shell
+docker service create -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
+```
 
 ## Docker Swarm Stack
-xxx
+You xxxtodo
+docker stack deploy -c docker-stack-compose.yml voteapp
 
 ## Kubernetes Iperative commands
 xxx
