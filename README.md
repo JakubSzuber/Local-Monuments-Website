@@ -35,7 +35,10 @@ Python-related tools:
 │   └───...
 ├───docker-compose.yml
 ├───docker-stack.yml
-├───infrastructure.yml
+├───k8s-manifests
+│   ├── postgres.yml
+│   ├── gunicorn.yml
+│   └── nginx.yml
 ├───README.md
 ├───LICENSE
 └───services
