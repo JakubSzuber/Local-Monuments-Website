@@ -5,6 +5,8 @@ ERROR_NO_APP_WORKDIR=101
 RIGHT_WORKDIR=/app
 
 function description(){
+  echo "Waiting for postgres..."
+  sleep 7
   echo -e "Below some information about this container (wsgi gunicorn server) that is core for application work:\n"
   echo "List of objects in your $RIGHT_WORKDIR working directory:"
   ls -l .
