@@ -12,8 +12,6 @@ services:
         reservations:
           cpus: '0.25'
           memory: 64M
-    ports:
-      - 5432:5432
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
@@ -33,8 +31,6 @@ services:
           cpus: '0.25'
           memory: 128M
     restart: always
-    ports:
-      - 5000:5000
     depends_on:
       - flask-database
 
