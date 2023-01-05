@@ -90,7 +90,7 @@ Whatever method to run the application you will chose you need to have [Docker](
 ## Docker Compose
 
 To run app with compose file you have to create directory wherever you want and then clone from that repo...git clone https://github.com/JakubSzuber/Local-Monuments-Website Local-Monuments-Website
-cd Local-Monuments-Website docker-compose up -d if...ordocker-compose up
+cd Local-Monuments-Website docker-compose up -d if...ordocker-compose up all containers will communicate between each other by using the same bridge network, created by docker compose by default 
 
 # Other methods:
 ## Docker commands
