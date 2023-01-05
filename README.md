@@ -33,49 +33,50 @@ Python-related tools:
 │   └───...
 ├───.git
 │   └───...
-├───docker-compose.yml
-├───docker-stack.yml
-├───k8s-manifests
-│   ├── postgres.yml
-│   ├── gunicorn.yml
-│   └── nginx.yml
-├───README.md
-├───LICENSE
-└───services
-    ├───database
-    │   ├───Connecting.txt
-    |   └───Dockerfile
-    ├───proxy-server
-    │   ├───conf
-    |   └───Dockerfile
-    └───WSGI-server
-        ├── Dockerfile
-        ├── .dockerignore
-        ├── infrastructure.png
-        ├── docker-entrypoint.sh
-        ├── main_python_files
-        │   ├── __init__.py
-        │   ├── config.py
-        │   ├── init_db.py
-        │   └── routes.py
-        ├── requirements.txt
-        ├── run.py
-        └── src                    
-            ├── static
-            │   ├── css
-            │   │   ├── about.css
-            │   │   ├── base.css
-            │   │   ├── gallery.css
-            │   │   └── home.css
-            │   └── js
-            │       ├── base.js
-            │       ├── gallery.js
-            │       └── home.js
-            └── template
-                ├── about.html
-                ├── base.html
-                ├── gallery.html
-                └── home.html
+├─── docker-compose.yml
+├─── docker-stack.yml
+├─── k8s-manifests
+│    ├── postgres.yml
+│    ├── gunicorn.yml
+│    └── nginx.yml
+├─── visualizer.stack.yml
+├─── README.md
+├─── LICENSE
+└─── services
+     ├─── database
+     │    ├─── Connecting.txt
+     |    └─── Dockerfile
+     ├─── proxy-server
+     │    ├─── conf
+     |    └─── Dockerfile
+     └─── WSGI-server
+          ├── Dockerfile
+          ├── .dockerignore
+          ├── infrastructure.png
+          ├── docker-entrypoint.sh
+          ├── main_python_files
+          │   ├── __init__.py
+          │   ├── config.py
+          │   ├── init_db.py
+          │   └── routes.py
+          ├── requirements.txt
+          ├── run.py
+          └── src                    
+              ├── static
+              │   ├── css
+              │   │   ├── about.css
+              │   │   ├── base.css
+              │   │   ├── gallery.css
+              │   │   └── home.css
+              │   └── js
+              │       ├── base.js
+              │       ├── gallery.js
+              │       └── home.js
+              └── template
+                  ├── about.html
+                  ├── base.html
+                  ├── gallery.html
+                  └── home.html
 ```
 
 ---
