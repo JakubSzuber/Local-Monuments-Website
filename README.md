@@ -141,7 +141,9 @@ xxx
 xxx
 
 ## Docker Declarative objects
-xxx
+xxxtodo...
+kubectl create namespace Local-Monuments-Website
+kubectl apply -f k8s-manifests
 
 
 <details><summary>Text source</summary>
