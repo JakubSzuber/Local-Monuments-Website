@@ -4,6 +4,14 @@ services:
   flask-database:
     container_name: postgres-database
     image: custom-postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 128M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
     ports:
       - 5432:5432
     environment:
@@ -16,15 +24,31 @@ services:
   wsgi-server:
     container_name: gunicorn-server
     image: flask_appp
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
     restart: always
     ports:
       - 5000:5000
     depends_on:
-      -   flask-database
+      - flask-database
 
   proxy-server:
     container_name: nginx-server
     image: custom-nginx
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 32M
+        reservations:
+          cpus: '0.25'
+          memory: 16M
     restart: always
     ports:
       - 80:80
