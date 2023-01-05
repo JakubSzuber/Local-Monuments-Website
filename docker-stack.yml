@@ -1,0 +1,71 @@
+#TODO dodaj rzeczy do "deploy:" np.:
+#deploy:
+#      mode: replicated
+#      replicas: 1
+#      labels: [APP=VOTING]  # Asign label for the service
+#      restart_policy:
+#        condition: on-failure
+#        delay: 10s
+#        max_attempts: 3  # Maximum version of attempts to restart the specific container
+#        window: 120s
+#      placement:
+#        constraints: [node.role == manager]
+#
+
+version: '3.7'
+
+services:
+  flask-database:
+    image: custom-postgres
+    deploy:
+      replicas: 1      #TODO
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=flask_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  wsgi-server:
+    image: flask_appp
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    restart: always
+    ports:
+      - 5000:5000
+    depends_on:
+      -   flask-database
+
+  proxy-server:
+    image: custom-nginx
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - wsgi-server
+
+volumes:
+  postgres_data: {}
