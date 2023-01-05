@@ -8,7 +8,8 @@ RUN addgroup -g 1000 python \
       && chown -R node:node /app; \
     apk update; \
     apk add --no-cache bash; \
-    apk add --no-cache tree
+    apk add --no-cache tree; \
+    apk add --no-cache curl
 
 WORKDIR /app
 
@@ -27,3 +28,7 @@ USER python:python
 EXPOSE 5000
 
 CMD [ "gunicorn", "--bind", "0.0.0.0:5000", "-w", "3", "run:app" ]
+
+## add healthcheck
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:5000/ || exit 1

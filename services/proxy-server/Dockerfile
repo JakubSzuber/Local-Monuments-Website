@@ -1,6 +1,7 @@
 FROM nginx:1.23-alpine-slim
 
-RUN apk update
+RUN apk update; \
+    apk add --no-cache curl
 
 COPY conf /etc/nginx/conf.d/default.conf
 
@@ -16,3 +17,7 @@ RUN touch /var/run/nginx.pid && \
 
 ## switch to non-root user
 USER nginx
+
+## add healthcheck
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost/ || exit 1
