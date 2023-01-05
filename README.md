@@ -130,9 +130,18 @@ Run your postgres database by this command
 docker service create -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
 ```
 
+xxx
+```shell
+docker stack deploy -c visualizer.stack.yml visualizer
+```
+
 ## Docker Swarm Stack
 You xxxtodo
 docker stack deploy -c docker-stack-compose.yml voteapp
+xxx
+```shell
+docker stack deploy -c visualizer.stack.yml visualizer
+```
 
 ## Kubernetes Iperative commands
 xxx
