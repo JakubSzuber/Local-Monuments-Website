@@ -18,11 +18,11 @@ spec:
           image: flask_appp
           resources:
             limits:
-              cpu: 0.50
-              memory: 512Mi
+              cpu: "500m"
+              memory: "512Mi"
             reservations:
-              cpu: 0.25
-              memory: 256Mi
+              cpu: "250m"
+              memory: "256Mi"
           ports:
             - containerPort: 5000
           env:

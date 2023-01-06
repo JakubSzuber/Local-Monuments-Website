@@ -29,11 +29,11 @@ spec:
           image: custom-postgres
           resources:
             limits:
-              cpu: 0.50
-              memory: 256Mi
+              cpu: "500m"
+              memory: "256Mi"
             reservations:
-              cpu: 0.25
-              memory: 128Mi
+              cpu: "250m"
+              memory: "128Mi"
           env:
             - name: POSTGRES_USER
               value: admin
