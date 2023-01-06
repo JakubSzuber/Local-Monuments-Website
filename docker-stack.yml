@@ -1,24 +1,25 @@
-#TODO dodaj rzeczy do "deploy:" np.:
-#deploy:
-#      mode: replicated
-#      replicas: 1
-#      labels: [APP=VOTING]  # Asign label for the service
-#      restart_policy:
-#        condition: on-failure
-#        delay: 10s
-#        max_attempts: 3  # Maximum version of attempts to restart the specific container
-#        window: 120s
-#      placement:
-#        constraints: [node.role == manager]
-#
+# Note: this file is adapted to use in the production environment, so it's a little different from the regular
+# docker-compose.yml - this docker-stack.yml file has larger resources limits, has newer compose file version
+# and has enhenced "deploy" section
 
-version: '3.7'
+version: '3.9'
 
 services:
   flask-database:
     image: custom-postgres
     deploy:
-      replicas: 1      #TODO
+      replicas: 2
+      labels: [app=local-monument-website]
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      placement:
+        max_replicas_per_node: 1
       resources:
         limits:
           cpus: '0.50'
@@ -26,8 +27,6 @@ services:
         reservations:
           cpus: '0.25'
           memory: 128M
-    ports:
-      - 5432:5432
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
@@ -38,6 +37,18 @@ services:
   wsgi-server:
     image: flask_appp
     deploy:
+      replicas: 2
+      labels: [app=local-monument-website]
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      placement:
+        max_replicas_per_node: 1
       resources:
         limits:
           cpus: '0.50'
@@ -45,7 +56,6 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
-    restart: always
     ports:
       - 5000:5000
     depends_on:
@@ -54,6 +64,18 @@ services:
   proxy-server:
     image: custom-nginx
     deploy:
+      replicas: 2
+      labels: [app=local-monument-website]
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      placement:
+        max_replicas_per_node: 1
       resources:
         limits:
           cpus: '0.50'
@@ -61,7 +83,6 @@ services:
         reservations:
           cpus: '0.25'
           memory: 128M
-    restart: always
     ports:
       - 80:80
     depends_on:
