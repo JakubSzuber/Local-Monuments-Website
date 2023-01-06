@@ -4,6 +4,8 @@ This project is containerized web application created form scratch. Whole applic
 zdjecie z home albo gif z chodzenia po stronie
 ![](https://cdn.dribbble.com/users/1491488/screenshots/5096807/gif.gif) 
 
+https://user-images.githubusercontent.com/90647840/210801137-83c3e447-e45c-4b7e-8cf3-a3c4093469b5.mp4
+
 ---
 
 TODO wez tak posegreguj te toole jak zrobiles z "Python-related tools"
@@ -31,46 +33,50 @@ Python-related tools:
 │   └───...
 ├───.git
 │   └───...
-├───docker-compose.yml
-├───docker-stack.yml
-├───infrastructure.yml
-├───README.md
-├───LICENSE
-└───services
-    ├───database
-    │   ├───Connecting.txt
-    |   └───Dockerfile
-    ├───proxy-server
-    │   ├───conf
-    |   └───Dockerfile
-    └───WSGI-server
-        ├── Dockerfile
-        ├── .dockerignore
-        ├── infrastructure.png
-        ├── docker-entrypoint.sh
-        ├── main_python_files
-        │   ├── __init__.py
-        │   ├── config.py
-        │   ├── init_db.py
-        │   └── routes.py
-        ├── requirements.txt
-        ├── run.py
-        └── src                    
-            ├── static
-            │   ├── css
-            │   │   ├── about.css
-            │   │   ├── base.css
-            │   │   ├── gallery.css
-            │   │   └── home.css
-            │   └── js
-            │       ├── base.js
-            │       ├── gallery.js
-            │       └── home.js
-            └── template
-                ├── about.html
-                ├── base.html
-                ├── gallery.html
-                └── home.html
+├─── docker-compose.yml
+├─── docker-stack.yml
+├─── k8s-manifests
+│    ├── postgres.yml
+│    ├── gunicorn.yml
+│    └── nginx.yml
+├─── visualizer.stack.yml
+├─── README.md
+├─── LICENSE
+└─── services
+     ├─── database
+     │    ├─── Connecting.txt
+     |    └─── Dockerfile
+     ├─── proxy-server
+     │    ├─── conf
+     |    └─── Dockerfile
+     └─── WSGI-server
+          ├── Dockerfile
+          ├── .dockerignore
+          ├── infrastructure.png
+          ├── docker-entrypoint.sh
+          ├── main_python_files
+          │   ├── __init__.py
+          │   ├── config.py
+          │   ├── init_db.py
+          │   └── routes.py
+          ├── requirements.txt
+          ├── run.py
+          └── src                    
+              ├── static
+              │   ├── css
+              │   │   ├── about.css
+              │   │   ├── base.css
+              │   │   ├── gallery.css
+              │   │   └── home.css
+              │   └── js
+              │       ├── base.js
+              │       ├── gallery.js
+              │       └── home.js
+              └── template
+                  ├── about.html
+                  ├── base.html
+                  ├── gallery.html
+                  └── home.html
 ```
 
 ---
@@ -88,7 +94,7 @@ Whatever method to run the application you will chose you need to have [Docker](
 ## Docker Compose
 
 To run app with compose file you have to create directory wherever you want and then clone from that repo...git clone https://github.com/JakubSzuber/Local-Monuments-Website Local-Monuments-Website
-cd Local-Monuments-Website docker-compose up -d if...ordocker-compose up
+cd Local-Monuments-Website docker-compose up -d if...ordocker-compose up all containers will communicate between each other by using the same bridge network, created by docker compose by default 
 
 # Other methods:
 ## Docker commands
@@ -125,9 +131,22 @@ Run your postgres database by this command
 docker service create -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
 ```
 
+xxxhttps://github.com/yandeu/docker-swarm-visualizer
+```shell
+docker stack deploy -c visualizer.stack.yml visualizer
+```
+xxx
+http://localhost:9500
+
 ## Docker Swarm Stack
 You xxxtodo
 docker stack deploy -c docker-stack-compose.yml voteapp
+xxxhttps://github.com/yandeu/docker-swarm-visualizer
+```shell
+docker stack deploy -c visualizer.stack.yml visualizer
+```
+xxx
+http://localhost:9500
 
 ## Kubernetes Iperative commands
 xxx
@@ -136,7 +155,9 @@ xxx
 xxx
 
 ## Docker Declarative objects
-xxx
+xxxtodo...
+kubectl create namespace Local-Monuments-Website
+kubectl apply -f k8s-manifests
 
 
 <details><summary>Text source</summary>
