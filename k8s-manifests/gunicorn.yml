@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wsgi-server
+  namespace: vote
 spec:
   replicas: 2
   selector:
@@ -40,6 +41,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: wsgi-server
+  namespace: vote
 spec:
   selector:
     app: local-monument-website
