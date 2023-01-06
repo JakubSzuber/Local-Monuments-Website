@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: flask-database
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: local-monument-website
+  template:
+    metadata:
+      labels:
+        app: local-monument-website
+        app.kubernetes.io/name: local-monument-website
+    spec:
+      containers:
+        - name: flask-database
+          image: custom-postgres
+          resources:
+            limits:
+              cpu: 0.50
+              memory: 256Mi
+            reservations:
+              cpu: 0.25
+              memory: 128Mi
+          env:
+            - name: POSTGRES_USER
+              value: admin
+            - name: POSTGRES_PASSWORD
+              value: admin
+            - name: POSTGRES_DB
+              value: flask_db
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-database
+spec:
+  selector:
+    app: local-monument-website
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
