@@ -151,6 +151,9 @@ http://localhost:9500
 > **Note**
 > Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly)
 
+xxx
+kubectl create namespace local-monument-website
+
 ## Kubernetes Iperative commands
 xxx
 
