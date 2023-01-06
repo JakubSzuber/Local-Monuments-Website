@@ -4,7 +4,7 @@ This project is containerized web application created form scratch. Whole applic
 zdjecie z home albo gif z chodzenia po stronie
 ![](https://cdn.dribbble.com/users/1491488/screenshots/5096807/gif.gif) 
 
-https://user-images.githubusercontent.com/90647840/210801137-83c3e447-e45c-4b7e-8cf3-a3c4093469b5.mp4
+https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-ae40-dd899621c62c.mp4
 
 ---
 
