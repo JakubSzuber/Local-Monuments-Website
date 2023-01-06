@@ -139,7 +139,7 @@ xxx
 http://localhost:9500
 
 ## Docker Swarm Stack
-You xxxtodo
+You xxxtodonapisz o tym ze kontener nginx more pare razy sie zrestartowac przed finalnym dzialaniem aplikacji z powodu ze..wiec bedzie trzeba poprostu poczekac nie wiecej niz minute
 docker stack deploy -c docker-stack-compose.yml voteapp
 xxxhttps://github.com/yandeu/docker-swarm-visualizer
 ```shell
