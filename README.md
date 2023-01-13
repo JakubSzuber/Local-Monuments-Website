@@ -35,11 +35,12 @@ Python-related tools:
 │   └───...
 ├─── docker-compose.yml
 ├─── docker-stack.yml
+├─── visualizer.stack.yml
 ├─── k8s-manifests
 │    ├── postgres.yml
 │    ├── gunicorn.yml
-│    └── nginx.yml
-├─── visualizer.stack.yml
+│    ├── nginx.yml
+│    └── namespace.yml
 ├─── README.md
 ├─── LICENSE
 └─── services
