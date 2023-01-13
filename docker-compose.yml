@@ -21,7 +21,7 @@ services:
 
   wsgi-server:
     container_name: gunicorn-server
-    image: flask_appp
+    image: flask_app
     deploy:
       resources:
         limits:
@@ -47,7 +47,7 @@ services:
           memory: 16M
     restart: always
     ports:
-      - 80:80
+      - "80:80"
     depends_on:
       - wsgi-server
 
