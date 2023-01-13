@@ -1,7 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from main_python_files.config import DB
+from .config import DB
 import psycopg2
 
 app = Flask(__name__, template_folder='../src/template', static_folder='../src/static')
@@ -20,4 +20,4 @@ def get_db_connection():
                             port=5432)
     return conn
 
-from main_python_files import routes
+from . import routes
