@@ -1,3 +1,7 @@
+// This JavaScript code creates a slideshow by controlling the visibility of slides and dots through HTML classes and JavaScript functions.
+// The plusSlides(n) function increments the slideIndex by n, the currentSlide(n) function sets the slideIndex to n, the
+// showSlides(n) function hides all the slides and dots, then makes the slide and dot at the current slideIndex visible.
+
 var slideIndex = 1;
 
 showSlides(slideIndex);
