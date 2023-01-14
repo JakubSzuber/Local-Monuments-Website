@@ -1,3 +1,9 @@
+# This is an initialization file for a Flask application
+# It sets up the Flask app and connects it to a SQLAlchemy object and a Bcrypt object
+# It also imports a config file for the database connection URI and sets a secret key for the application
+# Additionally, it creates a function for creating a connection to a Postgres database
+# It also imports the routes module for the application
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -5,16 +11,16 @@ from .config import DB
 import psycopg2
 
 app = Flask(__name__, template_folder="../src/template", static_folder="../src/static")
-app.config["SQLALCHEMY_DATABASE_URI"] = DB
-app.config["SECRET_KEY"] = "ec9439cfc6c796ae2029594d"
+app.config["SQLALCHEMY_DATABASE_URI"] = DB  # URI for connecting to the database
+app.config["SECRET_KEY"] = "ec9439cfc6c796ae2029594d"  # Secret key for the application
 
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
+db = SQLAlchemy(app)  # SQLAlchemy object connected to the app
+bcrypt = Bcrypt(app)  # Bcrypt object connected to the app
 
-# below func from blog article
+# Function to create a connection to the Postgres database
 def get_db_connection():
     conn = psycopg2.connect(
-        host="flask-database",  # Tutaj moze byc: localhost albo flask-database
+        host="flask-database",
         database="flask_db",
         user="admin",
         password="admin",
@@ -22,5 +28,4 @@ def get_db_connection():
     )
     return conn
 
-
-from . import routes
+from . import routes  # Import the routes module
