@@ -1,3 +1,5 @@
+/*Each selector with ".active" is used when website is in light mode*/
+
 * {
     box-sizing: border-box;
 }
@@ -19,14 +21,12 @@ img:not(#github) {
     border-radius: 20px;
 }
 
-/* The grid: Four equal columns that floats next to each other */
 .column {
     float: left;
     width: 23%;
     padding: 10px;
 }
 
-/* Style the images inside the grid */
 .column img {
     opacity: 0.8;
     cursor: pointer;
@@ -36,14 +36,12 @@ img:not(#github) {
     opacity: 1;
 }
 
-/* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
 
-/* The expanding image container */
 .container {
     position: fixed;
     display: none;
@@ -55,7 +53,6 @@ img:not(#github) {
     margin-left: -12.5%;
 }
 
-/* Expanding image text */
 #imgtext {
     position: absolute;
     top: 3%;
@@ -64,7 +61,6 @@ img:not(#github) {
     color: black;
 }
 
-/* Closable button inside the expanded image */
 .closebtn {
     position: absolute;
     top: 0;
@@ -75,7 +71,6 @@ img:not(#github) {
     cursor: pointer;
 }
 
-/* The overlay effect */
 .overlay {
     display: none;
     position: fixed;
@@ -89,7 +84,6 @@ img:not(#github) {
     z-index: 2;
 }
 
-/* The overlay content */
 .overlay-content {
     position: relative;
     top: 106%;

@@ -1,3 +1,5 @@
+/*Each selector with ".active" is used when the website is in light mode after used toggle button*/
+
 body {
     margin: 0 auto;
     color: white;

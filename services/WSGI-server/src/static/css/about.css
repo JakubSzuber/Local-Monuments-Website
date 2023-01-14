@@ -1,3 +1,5 @@
+/*Each selector with ".active" is used when website is in light mode*/
+
 img:not(#github) {
     position: relative;
     border-radius: 40px;
