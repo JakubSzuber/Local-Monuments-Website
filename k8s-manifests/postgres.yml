@@ -1,3 +1,9 @@
+# This file creates a Persistent Volume Claim, a StatefulSet, and a Service for a Postgres database in a Kubernetes cluster.
+# The Persistent Volume Claim creates a storage of 1Gi
+# The StatefulSet creates two replicas of a pod, each containing a container running the Postgres database.
+# The Service exposes the Postgres database to internal traffic on port 5432 and forwards traffic to target port 5432 on the selected pods.
+# The pod container has a environment variable and resources limits and reservations.
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

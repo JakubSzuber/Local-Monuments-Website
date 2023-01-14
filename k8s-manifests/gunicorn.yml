@@ -1,3 +1,8 @@
+# This file creates a Deployment and a Service for a Flask app in a Kubernetes cluster.
+# The Deployment creates two replicas of a pod, each containing a container running the Flask app.
+# The Service exposes the app to external traffic on port 5000.
+# The pod container has a volume mount and environment variable and resources limits and reservations.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

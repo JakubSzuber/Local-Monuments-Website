@@ -1,3 +1,5 @@
+# This file creates a namespace in a Kubernetes cluster named "local-monument-website".
+
 apiVersion: v1
 kind: Namespace
 metadata:
