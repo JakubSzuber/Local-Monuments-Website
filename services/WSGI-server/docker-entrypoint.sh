@@ -1,4 +1,8 @@
 #!/bin/bash
+# This script is used to: wait some time for initialization of the Postgres, print some information about Gunicorn
+# container, execute init_db.py (that connects to Postgres and runs some queries to insert needed data into Postgres)
+# and finally check if the working directory is correct before running the rest of Dockerfile
+
 set -e
 
 ERROR_NO_APP_WORKDIR=101

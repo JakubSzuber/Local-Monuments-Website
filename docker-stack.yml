@@ -1,4 +1,5 @@
-# Note: this file is adapted to use in the production environment, so it's a little different from the regular
+# Note:
+# This file is adapted to use in the production environment, so it's a little different from the regular
 # docker-compose.yml - this docker-stack.yml file has larger resources limits, has newer compose file version
 # and has enhenced "deploy" section
 

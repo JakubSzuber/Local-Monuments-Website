@@ -1,3 +1,13 @@
+# This is a Docker Compose file that sets up three services: flask-database, wsgi-server, and proxy-server.
+# The flask-database service uses a custom postgres image, has resources limits and reservations set, and has environment
+# variables set for the Postgres user, password, and database name.
+# The wsgi-server service uses a custom gunicorn image and has resources limits and reservations set. It also depends
+# on the flask-database service.
+# The proxy-server service uses a custom nginx image, has resources limits and reservations set, and exposes port 80.
+# It also depends on the wsgi-server service.
+# The file also sets up a volume named postgres_data.
+
+
 version: '3.7'
 
 services:

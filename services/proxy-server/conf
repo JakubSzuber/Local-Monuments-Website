@@ -1,3 +1,7 @@
+# # This is a Nginx configuration file
+# It creates a server block that listens on port 80 and uses the server name "localhost"
+# It creates a location block that proxies incoming requests to the "wsgi-server" service on port 5000
+
 server {
     listen        80;
     server_name   localhost;
