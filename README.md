@@ -23,7 +23,10 @@ Python-related tools:
 - Gunicorn WSGI server
 - Web Lanuages (HTML, CSS, JavaScript)
 
-# Project structure
+
+<details>
+<summary>See the project structure:</summary>
+
 ```$ tree Local-Monuments-Website
 .
 ├───.idea
@@ -76,6 +79,7 @@ Python-related tools:
                   ├── gallery.html
                   └── home.html
 ```
+</details>
 
 ---
 
@@ -91,17 +95,27 @@ https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-
 </details>
 
 ## Requirements
-Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/). Currently best way of installing a Docker is to install whole [Docker Desktop](https://www.docker.com/products/docker-desktop/) (supported for Windows, macOS, Linux). If you already have a Docker you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched (every container use lightweight versions of the images to reduce memory and time while building them, and reduce vulnerabilities).
+Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/). Currently best way of installing a Docker is to install whole [Docker Desktop](https://www.docker.com/products/docker-desktop/) (supported for Windows, macOS, Linux). If you already have a Docker you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched (every container use lightweight versions of the images to reduce memory and time while building them, and reduce vulnerabilities). **Rememeber to run docker daemon before deploying an app localy or to make sure that your are in the cluster if you want to deploy this app in it.**
 
 # Recommended method:
 ## Docker Compose
 
-To run app with compose file you have to create directory wherever you want and then clone from that repo...git clone https://github.com/JakubSzuber/Local-Monuments-Website Local-Monuments-Website
-cd Local-Monuments-Website docker-compose up -d if...ordocker-compose up all containers will communicate between each other by using the same bridge network, created by docker compose by default 
+To run app with compose file you have to create directory wherever you want and then clone from that repo
+```shell
+git clone https://github.com/JakubSzuber/Local-Monuments-Website Local-Monuments-Website
+```
+all containers will communicate between each other by using the same bridge network, created by docker compose by default  
+```shell
+cd Local-Monuments-Website
+```
+all containers will communicate between each other by using the same bridge network, created by docker compose by default  
+```shell
+docker-compose up -d if...ordocker-compose up
+```
 
 # Other methods:
 ## Docker commands
-You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
+You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important. TODO moze trzeba bedzie network stworzyc
 Run your nginx proxy server by this command:
 ```shell
 docker container run -d --name nginx-server --network flask_network -p 80:80 JakubSzuber/custom-nginx
@@ -114,7 +128,7 @@ docker container run -d --name gunicorn-server -p 5000:5000 --network flask_netw
 
 Run your postgres database by this command
 ```shell
-docker container run -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
+docker container run -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 JakubSzuber/custom-postgres
 ```
 
 ## Docker Swarm commands
