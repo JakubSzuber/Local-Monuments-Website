@@ -207,10 +207,7 @@ Links to each used image is in the file [init_db.py](https://github.com/JakubSzu
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
 todo:
-
-dodaj zdjecia z docker desktop albo konsoli ze co powinno byc widac jesli kontener poprawnie chodzi
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
-do zakladni used tools dodaj nginx
 
 
 ![](https://www.contrastsecurity.com/hs-fs/hubfs/images/DevOps%20Solutions/devops-old-way.gif?width=1322&name=devops-old-way.gif)
