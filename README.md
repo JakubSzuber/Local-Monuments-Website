@@ -1,14 +1,11 @@
 # Local-Monuments-Website
-This project is containerized web application created form scratch. Whole application is totally my autorship. This project show plenty of ways to run this app but I recommend you to choose the standard Docker commands or Docker Compose because of they complexity and short time required to run an app. When you already run this app you could enter [localhost](https://localhost:80) (default port 80) to see page interface where you can click to see next slide with next Poland's monument.
+This project is containerized web application created completely form scratch. Whole application is my autorship. Application is composed of 3 containers: postgres, nginx and gunicorn. In a nutshell: PostgreSQL works as our database that stores all data about monuments, gunicorn manages the traffic (content of the website) to the nginx server so you can just simple enter the localhost and use whole website. To see more information about how the website works run this application and enter the About page. This project shows plenty of ways on how to run this app but I recommend you to choose the Docker Compose because of they low complexity and short time required to run an app. When you already run this app you could enter [localhost](https://localhost:80) (default port 80) to see home page of the application.
 
-zdjecie z home albo gif z chodzenia po stronie
-![](https://cdn.dribbble.com/users/1491488/screenshots/5096807/gif.gif) 
-
-https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-ae40-dd899621c62c.mp4
+todo: give much shorter gif
+![36a919abf5b7bf9a679093d08fb6d5b1](https://user-images.githubusercontent.com/90647840/212571254-68e7f035-289c-4278-9f09-fb788d92ceea.gif)
 
 ---
 
-TODO wez tak posegreguj te toole jak zrobiles z "Python-related tools"
 # Stack
 Python-related tools:
 - Flask
@@ -84,12 +81,17 @@ Python-related tools:
 
 # How to run app
 > **Note**
-> xxx
+> Remember that this project implements only core functionality so you should add your additional stuff in case of deploying this app on the production environment
 
-https://user-images.githubusercontent.com/1161307/171013513-95f18734-233d-45d3-aaf5-d6aec687db0e.mov
+<details>
+<summary>Look at the demo process of deploying this app:</summary>
+
+https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-ae40-dd899621c62c.mp4
+
+</details>
 
 ## Requirements
-Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/). If you already have a Docker you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched (every container use lightweight versions of the images to reduce memory and time while building them, and reduce vulnerabilities).
+Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) installed you your computer. You can download docker on any OS [here](https://docs.docker.com/get-docker/). Currently best way of installing a Docker is to install whole [Docker Desktop](https://www.docker.com/products/docker-desktop/) (supported for Windows, macOS, Linux). If you already have a Docker you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched (every container use lightweight versions of the images to reduce memory and time while building them, and reduce vulnerabilities).
 
 # Recommended method:
 ## Docker Compose
@@ -208,9 +210,6 @@ Links to each used image is in the file [init_db.py](https://github.com/JakubSzu
 <br><br><br><br><br><br><br><br><br><br><br><br>
 todo:
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
-
-
-![](https://www.contrastsecurity.com/hs-fs/hubfs/images/DevOps%20Solutions/devops-old-way.gif?width=1322&name=devops-old-way.gif)
 
 ![image](https://user-images.githubusercontent.com/90647840/209741199-e433f15f-7473-4e12-8705-b3c049ba8bd7.png)
 todoxxxxafter launching all containers you should see in Docker Desktop containers list similar view to above what means that every conatiner is running successively. Now you can click on whatever container to see information about it's image layers or enter the container's inspection, terminal, logs or stats.
