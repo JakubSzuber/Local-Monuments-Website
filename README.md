@@ -182,6 +182,11 @@ xxxtodo...
 kubectl create namespace Local-Monuments-Website
 kubectl apply -f k8s-manifests
 
+# Final result & Clean up
+dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
+
+![image](https://user-images.githubusercontent.com/90647840/209741199-e433f15f-7473-4e12-8705-b3c049ba8bd7.png)
+todoxxxxafter launching all containers you should see in Docker Desktop containers list similar view to above what means that every conatiner is running successively. Now you can click on whatever container to see information about it's image layers or enter the container's inspection, terminal, logs or stats.
 
 <details><summary>Text source</summary>
 
@@ -213,17 +218,3 @@ https://zabytek.pl/pl/obiekty/stargard-ratusz)
 Links to each used image is in the file [init_db.py](https://github.com/JakubSzuber/Local-Monuments-Website/blob/main/services/web/main_python_files/init_db.py)
  
 </details>
-
-
-
-
-
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
-todo:
-dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
-
-![image](https://user-images.githubusercontent.com/90647840/209741199-e433f15f-7473-4e12-8705-b3c049ba8bd7.png)
-todoxxxxafter launching all containers you should see in Docker Desktop containers list similar view to above what means that every conatiner is running successively. Now you can click on whatever container to see information about it's image layers or enter the container's inspection, terminal, logs or stats.
