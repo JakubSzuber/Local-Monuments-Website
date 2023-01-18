@@ -1,8 +1,8 @@
 # Local-Monuments-Website
 This project is containerized web application created completely form scratch. Whole application is my autorship. Application is composed of 3 containers: postgres, nginx and gunicorn. In a nutshell: PostgreSQL works as our database that stores all data about monuments, gunicorn manages the traffic (content of the website) to the nginx server so you can just simple enter the localhost and use whole website. To see more information about how the website works run this application and enter the About page. This project shows plenty of ways on how to run this app but I recommend you to choose the Docker Compose because of they low complexity and short time required to run an app. When you already run this app you could enter [localhost](https://localhost:80) (default port 80) to see home page of the application.
 
-todo: give much shorter gif
-![36a919abf5b7bf9a679093d08fb6d5b1](https://user-images.githubusercontent.com/90647840/212571254-68e7f035-289c-4278-9f09-fb788d92ceea.gif)
+TODO: add gif from second monitor
+xxx
 
 ---
 
@@ -11,21 +11,24 @@ Python-related tools:
 - Flask
 - Psycopg2
 - Black
-- PostgreSQL
+
+Container-related tools:
 - Docker
 - Docker Compose
 - Docker Swarm Stack
 - Kubernetes
+
+Other:
+- PostgreSQL
 - Nginx
+- Gunicorn WSGI server
 - Bash
 - Linux
 - Git
-- Gunicorn WSGI server
 - Web Lanuages (HTML, CSS, JavaScript)
 
-
 <details>
-<summary>See the project structure:</summary>
+<summary><b>Click to see the project structure:</b></summary>
 
 ```$ tree Local-Monuments-Website
 .
@@ -87,8 +90,9 @@ Python-related tools:
 > **Note**
 > Remember that this project implements only core functionality so you should add your additional stuff in case of deploying this app on the production environment
 
+TODO: add gif from second monitor
 <details>
-<summary>Look at the demo process of deploying this app:</summary>
+<summary><b>Click to look at the demo process of deploying this app (example with Docker Swarm):</b></summary>
 
 https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-ae40-dd899621c62c.mp4
 
