@@ -1,7 +1,8 @@
 # Note:
 # This file is adapted to use in the production environment, so it's a little different from the regular
 # docker-compose.yml - this docker-stack.yml file has larger resources limits, has newer compose file version
-# and has enhenced "deploy" section
+# and has enhenced "deploy" section. Moreover, you can uncomment lines that specify that services can be deployed
+# only on worker nodes
 
 version: '3.9'
 
@@ -21,6 +22,7 @@ services:
         window: 120s
       placement:
         max_replicas_per_node: 1
+        #constraints: [node.role == worker]
       resources:
         limits:
           cpus: '0.50'
@@ -50,6 +52,7 @@ services:
         window: 120s
       placement:
         max_replicas_per_node: 1
+        #constraints: [node.role == worker]
       resources:
         limits:
           cpus: '0.50'
@@ -75,6 +78,7 @@ services:
         window: 120s
       placement:
         max_replicas_per_node: 1
+        #constraints: [node.role == worker]
       resources:
         limits:
           cpus: '0.50'
@@ -83,7 +87,7 @@ services:
           cpus: '0.25'
           memory: 128M
     ports:
-      - 80:80
+      - "80:80"
     depends_on:
       - wsgi-server
 
