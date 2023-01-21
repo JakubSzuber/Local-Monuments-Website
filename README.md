@@ -1,8 +1,9 @@
 # Local-Monuments-Website
 This project is containerized web application created completely form scratch. Whole application is my autorship. Application is composed of 3 containers: postgres, nginx and gunicorn. In a nutshell: PostgreSQL works as our database that stores all data about monuments, gunicorn manages the traffic (content of the website) to the nginx server so you can just simple enter the localhost and use whole website. To see more information about how the website works run this application and enter the About page. This project shows plenty of ways on how to run this app but I recommend you to choose the Docker Compose because of they low complexity and short time required to run an app. When you already run this app you could enter [localhost](https://localhost:80) (default port 80) to see home page of the application.
 
-todo: give much shorter gif
-![36a919abf5b7bf9a679093d08fb6d5b1](https://user-images.githubusercontent.com/90647840/212571254-68e7f035-289c-4278-9f09-fb788d92ceea.gif)
+TODO: add gif from second monitor
+
+https://user-images.githubusercontent.com/90647840/213277875-9e7054bd-22cf-47ae-aec6-29bd0687e897.mov
 
 ---
 
@@ -11,21 +12,24 @@ Python-related tools:
 - Flask
 - Psycopg2
 - Black
-- PostgreSQL
+
+Container-related tools:
 - Docker
 - Docker Compose
 - Docker Swarm Stack
 - Kubernetes
+
+Other:
+- PostgreSQL
 - Nginx
+- Gunicorn WSGI server
 - Bash
 - Linux
 - Git
-- Gunicorn WSGI server
 - Web Lanuages (HTML, CSS, JavaScript)
 
-
 <details>
-<summary>See the project structure:</summary>
+<summary><b>Click to see the project structure:</b></summary>
 
 ```$ tree Local-Monuments-Website
 .
@@ -87,8 +91,9 @@ Python-related tools:
 > **Note**
 > Remember that this project implements only core functionality so you should add your additional stuff in case of deploying this app on the production environment
 
+TODO: add gif from second monitor and start deploying from scratch
 <details>
-<summary>Look at the demo process of deploying this app:</summary>
+<summary><b>Click to look at the demo process of deploying this app (example with Docker Swarm):</b></summary>
 
 https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-ae40-dd899621c62c.mp4
 
@@ -118,34 +123,34 @@ docker-compose up -d if...ordocker-compose up
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important. TODO moze trzeba bedzie network stworzyc
 Run your nginx proxy server by this command:
 ```shell
-docker container run -d --name nginx-server --network flask_network -p 80:80 JakubSzuber/custom-nginx
+docker container run -d --name nginx-server --network flask_network -p 80:80 jakubszuber/custom-nginx
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker container run -d --name gunicorn-server -p 5000:5000 --network flask_network JakubSzuber/custom-gunicorn
+docker container run -d --name gunicorn-server -p 5000:5000 --network flask_network jakubszuber/custom-gunicorn
 ```
 
 Run your postgres database by this command
 ```shell
-docker container run -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 JakubSzuber/custom-postgres
+docker container run -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 jakubszuber/custom-postgres
 ```
 
 ## Docker Swarm commands
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
 Run your nginx proxy server by this command:
 ```shell
-docker service create -d --name nginx-server --network flask_network -p 80:80 JakubSzuber/custom-nginx
+docker service create -d --name nginx-server --network flask_network -p 80:80 jakubszuber/custom-nginx
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker service create -d --name gunicorn-server -p 5000:5000 --network flask_network JakubSzuber/custom-gunicorn
+docker service create -d --name gunicorn-server -p 5000:5000 --network flask_network jakubszuber/custom-gunicorn
 ```
 
 Run your postgres database by this command
 ```shell
-docker service create -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data -p 5432:5432 postgres:15-alpine
+docker service create -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data -p 5432:5432 jakubszuber/custom-postgres
 ```
 
 xxxhttps://github.com/yandeu/docker-swarm-visualizer
