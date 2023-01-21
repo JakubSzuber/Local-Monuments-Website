@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: flask-database
-          image: custom-postgres
+          image: jakubszuber/custom-postgres
           resources:
             limits:
               cpu: "500m"

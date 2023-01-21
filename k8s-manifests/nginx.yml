@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: proxy-server
-          image: custom-nginx
+          image: jakubszuber/custom-nginx
           resources:
             limits:
               cpu: "500m"

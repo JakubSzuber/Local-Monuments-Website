@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: wsgi-server
-          image: flask_appp
+          image: jakubszuber/custom-gunicorn
           resources:
             limits:
               cpu: "500m"
