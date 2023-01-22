@@ -8,7 +8,7 @@ version: '3.9'
 
 services:
   flask-database:
-    image: custom-postgres
+    image: jakubszuber/custom-postgres
     deploy:
       replicas: 2
       labels: [app=local-monument-website]
@@ -38,7 +38,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   wsgi-server:
-    image: flask_appp
+    image: jakubszuber/custom-gunicorn
     deploy:
       replicas: 2
       labels: [app=local-monument-website]
@@ -64,7 +64,7 @@ services:
       -   flask-database
 
   proxy-server:
-    image: custom-nginx
+    image: jakubszuber/custom-nginx
     deploy:
       replicas: 2
       labels: [app=local-monument-website]

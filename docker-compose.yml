@@ -13,7 +13,7 @@ version: '3.7'
 services:
   flask-database:
     container_name: postgres-database
-    image: custom-postgres
+    image: jakubszuber/custom-postgres
     deploy:
       resources:
         limits:
@@ -31,7 +31,7 @@ services:
 
   wsgi-server:
     container_name: gunicorn-server
-    image: flask_app
+    image: jakubszuber/custom-gunicorn
     deploy:
       resources:
         limits:
@@ -46,7 +46,7 @@ services:
 
   proxy-server:
     container_name: nginx-server
-    image: custom-nginx
+    image: jakubszuber/custom-nginx
     deploy:
       resources:
         limits:
