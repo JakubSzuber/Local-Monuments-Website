@@ -123,34 +123,72 @@ docker-compose up -d if...ordocker-compose up
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important. TODO moze trzeba bedzie network stworzyc
 Run your nginx proxy server by this command:
 ```shell
-docker container run -d --name nginx-server --network flask_network -p 80:80 jakubszuber/custom-nginx
+docker container run \
+     -d \
+     --name nginx-server \
+     -p 80:80 \
+     --network flask_network \
+     jakubszuber/custom-nginx
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker container run -d --name gunicorn-server -p 5000:5000 --network flask_network jakubszuber/custom-gunicorn
+docker container run \
+     -d \
+     --name gunicorn-server \
+     -p 5000:5000 \
+     --network flask_network \
+     jakubszuber/custom-gunicorn
 ```
 
 Run your postgres database by this command
 ```shell
-docker container run -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data -p 5432:5432 jakubszuber/custom-postgres
+docker container run \
+     -d \
+     --name postgres-database \
+     -p 5432:5432 \
+     -e POSTGRES_USER=admin \
+     -e POSTGRES_PASSWORD=admin \
+     -e POSTGRES_DB=flask_db \
+     -v postgres_data:/var/lib/postgresql/data \
+     --network flask_network \
+     jakubszuber/custom-postgres
 ```
 
 ## Docker Swarm commands
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
 Run your nginx proxy server by this command:
 ```shell
-docker service create -d --name nginx-server --network flask_network -p 80:80 jakubszuber/custom-nginx
+docker service create \
+     -d \
+     --name nginx-server \
+     -p 80:80 \
+     --network flask_network \
+     jakubszuber/custom-nginx
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker service create -d --name gunicorn-server -p 5000:5000 --network flask_network jakubszuber/custom-gunicorn
+docker service create \
+     -d \
+     --name gunicorn-server \
+     -p 5000:5000 \
+     --network flask_network \
+     jakubszuber/custom-gunicorn
 ```
 
 Run your postgres database by this command
 ```shell
-docker service create -d --name postgres-database --network flask_network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data -p 5432:5432 jakubszuber/custom-postgres
+docker service create \
+     -d \
+     --name postgres-database \
+     -p 5432:5432 \
+     -e POSTGRES_USER=admin \
+     -e POSTGRES_PASSWORD=admin \
+     -e POSTGRES_DB=flask_db \
+     --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data \
+     --network flask_network \
+     jakubszuber/custom-postgres
 ```
 
 xxxhttps://github.com/yandeu/docker-swarm-visualizer
