@@ -102,94 +102,117 @@ Whatever method to run the application you will chose you need to have [Docker](
 # Recommended method:
 ## Docker Compose
 
-To run the app with compose file first, you have to clone this repo wherever you
+To run the app with compose file first, you have to clone this repo wherever you:
 ```shell
 git clone https://github.com/JakubSzuber/Local-Monuments-Website
 ```
-Enter the project's directory
+
+Enter the project's directory:
 ```shell
 cd Local-Monuments-Website
 ```
-Launch all containers that will communicate between each other by using the same bridge network, created by docker compose by default. You can add -d flag to disable logs
+
+Launch all containers that will communicate between each other by using the same bridge network, created by docker compose by default. You can add -d flag to disable logs:
 ```shell
 docker-compose up
 ```
 
 # Other methods:
 ## Docker commands
-You can deploy localy this app by creating containers one by one by using docker commands separately. The order of the command isn't important. TODO moze trzeba bedzie network stworzyc
-Run your nginx proxy server by this command:
+You can deploy localy this app by creating containers one by one by using docker commands separately. The order of the command is important!
+
+First create a bridge network for the containers:
 ```shell
 docker network create monuments_net
 ```
 
-Run your nginx proxy server by this command:
+Run your postgres database:
+```shell
+docker container run
+-d
+--name flask-database
+--expose 5432
+-e POSTGRES_USER=admin
+-e POSTGRES_PASSWORD=admin
+-e POSTGRES_DB=flask_db
+-v postgres_data:/var/lib/postgresql/data
+--network monuments_net
+jakubszuber/custom-postgres
+```
+
+Run your main container responsible for the application logic (this container contains all necessary files):
+```shell
+docker container run -d --name wsgi-server --expose 5000 --network monuments_net jakubszuber/custom-gunicorn
+```
+
+Run your nginx proxy server:
 ```shell
 docker container run -d --name nginx-server -p 80:80 --network monuments_net jakubszuber/custom-nginx
 ```
 
-Run your main container responsible for the application logic (this container contains all necessary files) by this command:
-```shell
-docker container run -d --name gunicorn-server -p 5000:5000 --network monuments_net jakubszuber/custom-gunicorn
-```
-
-Run your postgres database by this command
-```shell
-docker container run -d --name postgres-database -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=flask_db -v postgres_data:/var/lib/postgresql/data --network monuments_net jakubszuber/custom-postgres
-```
-
-## Docker Swarm commands
-You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command isn't important.
-Run your nginx proxy server by this command:
-```shell
-docker service create \
-     -d \
-     --name nginx-server \
-     -p 80:80 \
-     --network flask_network \
-     jakubszuber/custom-nginx
-```
-
-Run your main container responsible for the application logic (this container contains all necessary files) by this command:
-```shell
-docker service create \
-     -d \
-     --name gunicorn-server \
-     -p 5000:5000 \
-     --network flask_network \
-     jakubszuber/custom-gunicorn
-```
-
-Run your postgres database by this command
-```shell
-docker service create \
-     -d \
-     --name postgres-database \
-     -p 5432:5432 \
-     -e POSTGRES_USER=admin \
-     -e POSTGRES_PASSWORD=admin \
-     -e POSTGRES_DB=flask_db \
-     --mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data \
-     --network flask_network \
-     jakubszuber/custom-postgres
-```
-
-xxxhttps://github.com/yandeu/docker-swarm-visualizer
-```shell
-docker stack deploy -c visualizer.stack.yml visualizer
-```
-xxx
-http://localhost:9500
-
 ## Docker Swarm Stack
 You xxxtodonapisz o tym ze kontener nginx more pare razy sie zrestartowac przed finalnym dzialaniem aplikacji z powodu ze..wiec bedzie trzeba poprostu poczekac nie wiecej niz minute
-docker stack deploy -c docker-stack-compose.yml voteapp
-xxxhttps://github.com/yandeu/docker-swarm-visualizer
+
+To run the app with compose file first, you have to clone this repo wherever you:
+```shell
+git clone https://github.com/JakubSzuber/Local-Monuments-Website
+```
+
+Enter the project's directory:
+```shell
+cd Local-Monuments-Website
+```
+
+XXX
+```shell
+docker stack deploy -c docker-stack.yml Local-Monuments-Website
+```
+
+xxxhttps://github.com/yandeu/docker-swarm-visualizer [Docker](https://www.docker.com/)
 ```shell
 docker stack deploy -c visualizer.stack.yml visualizer
 ```
+
 xxx
 http://localhost:9500
+
+## Docker Swarm commands
+You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command is important!
+
+First create a bridge network for the containers:TODO napisz cos o odresach ip w networku
+```shell
+docker network create --subnet 127.0.0.1/24 --gateway 127.0.0.1 --driver overlay monuments_net
+```
+
+Run your postgres database by this command
+```shell
+docker service create
+--replicas 2
+-d
+--name flask-database
+--expose 5432
+-e POSTGRES_USER=admin
+-e POSTGRES_PASSWORD=admin
+-e POSTGRES_DB=flask_db
+--mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data
+--network monuments_net
+jakubszuber/custom-postgres
+```
+
+Run your main container responsible for the application logic (this container contains all necessary files) by this command:
+```shell
+docker service create --replicas 2 -d --name wsgi-server --expose 5000 --network monuments_net jakubszuber/custom-gunicorn
+```
+
+Run your nginx proxy server by this command:
+```shell
+docker service create --replicas 2 -d --name nginx-server --publish published=80,target=80 --network monuments_net jakubszuber/custom-nginx
+```
+
+xxxhttps://github.com/yandeu/docker-swarm-visualizer [Docker](https://www.docker.com/) http://localhost:9500
+```shell
+docker stack deploy --replicas -c visualizer.stack.yml visualizer
+```
 
 > **Note**
 > Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly)
