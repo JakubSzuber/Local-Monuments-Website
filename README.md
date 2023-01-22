@@ -1,9 +1,7 @@
 # Local-Monuments-Website
 This project is containerized web application created completely form scratch. Whole application is my autorship. Application is composed of 3 containers: postgres, nginx and gunicorn. In a nutshell: PostgreSQL works as our database that stores all data about monuments, gunicorn manages the traffic (content of the website) to the nginx server so you can just simple enter the localhost and use whole website. To see more information about how the website works run this application and enter the About page. This project shows plenty of ways on how to run this app but I recommend you to choose the Docker Compose because of they low complexity and short time required to run an app. When you already run this app you could enter [localhost](https://localhost:80) (default port 80) to see home page of the application.
 
-TODO: add gif from second monitor
-
-https://user-images.githubusercontent.com/90647840/213277875-9e7054bd-22cf-47ae-aec6-29bd0687e897.mov
+https://user-images.githubusercontent.com/90647840/213920380-63ca8d57-2ef3-4bf2-9328-165cae569b28.mov
 
 ---
 
@@ -91,11 +89,10 @@ Other:
 > **Note**
 > Remember that this project implements only core functionality so you should add your additional stuff in case of deploying this app on the production environment
 
-TODO: add gif from second monitor and start deploying from scratch
 <details>
 <summary><b>Click to look at the demo process of deploying this app (example with Docker Swarm):</b></summary>
 
-https://user-images.githubusercontent.com/90647840/211113695-7be4c5bf-4a8f-4671-ae40-dd899621c62c.mp4
+https://user-images.githubusercontent.com/90647840/213922371-848ff6b3-60a8-4db2-94fb-7b11dbf41b42.mov
 
 </details>
 
