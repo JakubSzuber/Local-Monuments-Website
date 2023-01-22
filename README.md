@@ -183,7 +183,7 @@ Enter the project's directory:
 cd Local-Monuments-Website
 ```
 
-Furthermore you can use good looking [visualizer]([https://www.docker.com/](https://github.com/yandeu/docker-swarm-visualizer)) to https://github.com/yandeu/docker-swarm-visualizer to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
+Furthermore you can use good looking [visualizer](https://github.com/yandeu/docker-swarm-visualizer) to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
 ```shell
 docker stack deploy --replicas -c visualizer.stack.yml visualizer
 ```
@@ -262,7 +262,7 @@ docker service create
 --network monuments_net jakubszuber/custom-nginx
 ```
 
-Furthermore you can use good looking [visualizer]([https://www.docker.com/](https://github.com/yandeu/docker-swarm-visualizer)) to https://github.com/yandeu/docker-swarm-visualizer to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
+Furthermore you can use good looking [visualizer](https://github.com/yandeu/docker-swarm-visualizer) to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
 ```shell
 docker stack deploy --replicas -c visualizer.stack.yml visualizer
 ```
