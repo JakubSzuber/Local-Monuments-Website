@@ -139,6 +139,7 @@ docker container run
 --cpus "0.50"
 --memory 128M
 --network monuments_net
+--restart always
 jakubszuber/custom-postgres
 ```
 
@@ -152,6 +153,7 @@ wsgi-server
 --cpus "0.50"
 --memory 256M
 --network monuments_net
+--restart always
 jakubszuber/custom-gunicorn
 ```
 
@@ -164,6 +166,7 @@ docker container run
 --cpus "0.50"
 --memory 32M
 --network monuments_net
+--restart always
 jakubszuber/custom-nginx
 ```
 
@@ -178,11 +181,6 @@ git clone https://github.com/JakubSzuber/Local-Monuments-Website
 Enter the project's directory:
 ```shell
 cd Local-Monuments-Website
-```
-
-XXX
-```shell
-docker stack deploy -c docker-stack.yml Local-Monuments-Website
 ```
 
 Furthermore you can use good looking [visualizer]([https://www.docker.com/](https://github.com/yandeu/docker-swarm-visualizer)) to https://github.com/yandeu/docker-swarm-visualizer to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
