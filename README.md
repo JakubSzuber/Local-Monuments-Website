@@ -136,18 +136,35 @@ docker container run
 -e POSTGRES_PASSWORD=admin
 -e POSTGRES_DB=flask_db
 -v postgres_data:/var/lib/postgresql/data
+--cpus "0.50"
+--memory 128M
 --network monuments_net
 jakubszuber/custom-postgres
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files):
 ```shell
-docker container run -d --name wsgi-server --expose 5000 --network monuments_net jakubszuber/custom-gunicorn
+docker container run
+-d
+--name
+wsgi-server
+--expose 5000
+--cpus "0.50"
+--memory 256M
+--network monuments_net
+jakubszuber/custom-gunicorn
 ```
 
 Run your nginx proxy server:
 ```shell
-docker container run -d --name nginx-server -p 80:80 --network monuments_net jakubszuber/custom-nginx
+docker container run
+-d
+--name nginx-server
+-p 80:80
+--cpus "0.50"
+--memory 32M
+--network monuments_net
+jakubszuber/custom-nginx
 ```
 
 ## Docker Swarm Stack
@@ -168,52 +185,91 @@ XXX
 docker stack deploy -c docker-stack.yml Local-Monuments-Website
 ```
 
-xxxhttps://github.com/yandeu/docker-swarm-visualizer [Docker](https://www.docker.com/)
+Furthermore you can use good looking [visualizer]([https://www.docker.com/](https://github.com/yandeu/docker-swarm-visualizer)) to https://github.com/yandeu/docker-swarm-visualizer to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
 ```shell
-docker stack deploy -c visualizer.stack.yml visualizer
+docker stack deploy --replicas -c visualizer.stack.yml visualizer
 ```
-
-xxx
-http://localhost:9500
 
 ## Docker Swarm commands
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command is important!
 
-First create a bridge network for the containers:TODO napisz cos o odresach ip w networku
+> **Note**
+> TODOyou won't have x, y, z..."placement:" part that is in docker-stack.yml and you will have only one replica instad of two as it's specified in docker-stack.yml
+
+First create a bridge network for the containers (you can additionally add flags to specify your gateway, network's private IPv4, and subnet mask e.g. "--gateway 127.0.0.1" --subnet 127.0.0.1/24):
 ```shell
-docker network create --subnet 127.0.0.1/24 --gateway 127.0.0.1 --driver overlay monuments_net
+docker network create --driver overlay monuments_net
 ```
 
 Run your postgres database by this command
 ```shell
 docker service create
---replicas 2
--d
 --name flask-database
---expose 5432
--e POSTGRES_USER=admin
--e POSTGRES_PASSWORD=admin
--e POSTGRES_DB=flask_db
---mount type=volume,source=vol_db_data,target=/var/lib/postgresql/data
+--label app=local-monument-website
+--update-parallelism 2
+--update-delay 10s
+--restart-condition on-failure
+--restart-delay 10s
+--restart-max-attempts 3
+--restart-window 120s
+--limit-cpu 0.50
+--limit-memory 256M
+--reserve-cpu 0.25
+--reserve-memory 128M
+--env POSTGRES_USER=admin
+--env POSTGRES_PASSWORD=admin
+--env POSTGRES_DB=flask_db
+--mount type=volume,src=postgres_data,dst=/var/lib/postgresql/data
 --network monuments_net
 jakubszuber/custom-postgres
 ```
 
 Run your main container responsible for the application logic (this container contains all necessary files) by this command:
 ```shell
-docker service create --replicas 2 -d --name wsgi-server --expose 5000 --network monuments_net jakubszuber/custom-gunicorn
+docker service create
+--name wsgi-server
+--label app=local-monument-website
+--update-parallelism 2
+--update-delay 10s
+--restart-condition on-failure
+--restart-delay 10s
+--restart-max-attempts 3
+--restart-window 120s
+--limit-cpu 0.50
+--limit-memory 512M
+--reserve-cpu 0.25
+--reserve-memory 256M
+--with-registry-auth
+--network monuments_net
+jakubszuber/custom-gunicorn
 ```
 
 Run your nginx proxy server by this command:
 ```shell
-docker service create --replicas 2 -d --name nginx-server --publish published=80,target=80 --network monuments_net jakubszuber/custom-nginx
+docker service create
+--name proxy-server
+--label app=local-monument-website
+--update-parallelism 2
+--update-delay 10s
+--restart-condition on-failure
+--restart-delay 10s
+--restart-max-attempts 3
+--restart-window 120s
+--limit-cpu 0.50
+--limit-memory 256M
+--reserve-cpu 0.25
+--reserve-memory 128M
+--publish published=80,target=80
+--with-registry-auth
+--network monuments_net jakubszuber/custom-nginx
 ```
 
-xxxhttps://github.com/yandeu/docker-swarm-visualizer [Docker](https://www.docker.com/) http://localhost:9500
+Furthermore you can use good looking [visualizer]([https://www.docker.com/](https://github.com/yandeu/docker-swarm-visualizer)) to https://github.com/yandeu/docker-swarm-visualizer to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
 ```shell
 docker stack deploy --replicas -c visualizer.stack.yml visualizer
 ```
 
+## Kubernetes
 > **Note**
 > Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly)
 
