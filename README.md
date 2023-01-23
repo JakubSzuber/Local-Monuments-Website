@@ -171,7 +171,8 @@ jakubszuber/custom-nginx
 ```
 
 ## Docker Swarm Stack
-You xxxtodonapisz o tym ze kontener nginx more pare razy sie zrestartowac przed finalnym dzialaniem aplikacji z powodu ze..wiec bedzie trzeba poprostu poczekac nie wiecej niz minute
+> **Note**
+> The Nginx container may restart a few times before it finally becomes stable. That's because the WSGI server (which is required for Nginx work) takes some time to start, so you'll just have to wait around one minute
 
 To run the app with compose file first, you have to clone this repo wherever you:
 ```shell
@@ -192,7 +193,7 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command is important!
 
 > **Note**
-> TODOyou won't have x, y, z..."placement:" part that is in docker-stack.yml and you will have only one replica instad of two as it's specified in docker-stack.yml
+> If you decided to use Swarm commands instead of Swarm Stack (docker-stack.yml) then you won't have a few functionalities. More specifically - with the below commands you won't have functionalities of "placement:" part that specify the max replicas per node and the type of nodes that can take the replicas. Moreover number of replicas deployed is limited to one. Of course if you want those features and more you can use your own commands to have exac resources based on your needs.
 
 First create a bridge network for the containers (you can additionally add flags to specify your gateway, network's private IPv4, and subnet mask e.g. "--gateway 127.0.0.1" --subnet 127.0.0.1/24):
 ```shell
