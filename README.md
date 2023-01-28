@@ -278,9 +278,6 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 > **Note**
 > Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly)
 
-xxx
-kubectl create namespace local-monument-website
-
 ## Kubernetes Iperative commands
 xxx
 
@@ -288,9 +285,34 @@ xxx
 xxx
 
 ## Docker Declarative objects
-xxxtodo...
-kubectl create namespace Local-Monuments-Website
+
+XXX
+
+xxx
+```shell
+git clone https://github.com/JakubSzuber/Local-Monuments-Website.git
+```
+
+xxx
+```shell
+cd Local-Monuments-Website
+```
+
+xxx
+```shell
+kubectl apply -f k8s-manifests/namespace.yml
+```
+
+xxx
+```shell
 kubectl apply -f k8s-manifests
+```
+
+xxx
+```shell
+kubectl get all --namespace=local-monument-website
+```
+<br><br><br>
 
 # Final result & Clean up
 dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
