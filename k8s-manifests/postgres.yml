@@ -20,6 +20,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: flask-database
+  namespace: local-monument-website
 spec:
   replicas: 2
   selector:
