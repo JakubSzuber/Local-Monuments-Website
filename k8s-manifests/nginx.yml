@@ -1,6 +1,6 @@
 # This file creates a Deployment and a Service for a reverse proxy server in a Kubernetes cluster.
 # The Deployment creates two replicas of a pod, each containing a container running the reverse proxy server.
-# The Service exposes the proxy server to external traffic on port 80 and 30080, and forwards traffic to target port 80
+# The Service exposes the proxy server to external traffic on port 80, and forwards traffic to target port 80
 # on the selected pods.
 # The pod container has an environment variable and resources limits and reservations.
 
@@ -42,11 +42,10 @@ metadata:
   name: proxy-server
   namespace: local-monument-website
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: local-monument-website
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30080
