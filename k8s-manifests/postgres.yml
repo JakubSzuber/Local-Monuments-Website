@@ -2,13 +2,13 @@
 # The Persistent Volume Claim creates a storage of 1Gi
 # The StatefulSet creates two replicas of a pod, each containing a container running the Postgres database.
 # The Service exposes the Postgres database to internal traffic on port 5432 and forwards traffic to target port 5432 on the selected pods.
-# The pod container has a environment variable and resources limits and reservations.
+# The pod container has an environment variable and resources limits and reservations.
 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-data-pvc
-  namespace: vote
+  namespace: local-monument-website
 spec:
   accessModes:
     - ReadWriteOnce
@@ -35,12 +35,12 @@ spec:
         - name: flask-database
           image: jakubszuber/custom-postgres
           resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
             limits:
               cpu: "500m"
-              memory: "256Mi"
-            reservations:
-              cpu: "250m"
-              memory: "128Mi"
+              memory: "512Mi"
           env:
             - name: POSTGRES_USER
               value: admin
@@ -60,7 +60,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: flask-database
-  namespace: vote
+  namespace: local-monument-website
 spec:
   selector:
     app: local-monument-website
