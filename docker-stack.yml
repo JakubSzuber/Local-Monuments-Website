@@ -61,7 +61,7 @@ services:
           cpus: '0.25'
           memory: 256M
     depends_on:
-      -   flask-database
+      - flask-database
 
   proxy-server:
     image: jakubszuber/custom-nginx
