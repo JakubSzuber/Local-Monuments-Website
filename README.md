@@ -102,7 +102,9 @@ Whatever method to run the application you will chose you need to have [Docker](
 # Recommended method:
 ## Docker Compose
 
-To run the app with compose file first, you have to clone this repo wherever you:
+This method is recommended because it's the easiest and the fastest one. Furthermore, most features are included with it. A few deploying ways have some limited functionalities because they couldn't be applied. For example, basic Docker commands don't have a max number of replicas per node because it's not a needed thing when you what to run this app fast, locally and for example for learning purposes. Docker Compose is a good compromise (in this case) between simplicity and functionality.
+
+To run the app with Compose file, first, you have to clone this repo wherever you:
 ```shell
 git clone https://github.com/JakubSzuber/Local-Monuments-Website
 ```
@@ -171,6 +173,9 @@ jakubszuber/custom-nginx
 ```
 
 ## Docker Swarm Stack
+
+This way of deploying this app has the most functionalities. Most features that are applied to docker-stack.yml are focused on working on the production environment. Of course, if you would like to use this application in some way on the production you probably should make some modifications and add some additional stuff depending on your needs (docker-stack.yml implements the most core and basic infrastructure). Moreover you can uncomment lines that specify that services can be deployed only on worker nodes.
+
 > **Note**
 > The Nginx container may restart a few times before it finally becomes stable. That's because the WSGI server (which is required for Nginx work) takes some time to start, so you'll just have to wait around one minute
 
@@ -190,7 +195,8 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 ```
 
 ## Docker Swarm commands
-You can deploy localy this app by creating containers one by one by using docker commands in some kind of terminal like e.g Powershell, cmd. The order of the command is important!
+
+You can deploy locally this app in the Swarm cluster by creating containers one by one by using docker commands in a shell instead of using a Docker Swarm Stack. Remember that the order of the command is important!
 
 > **Note**
 > If you decided to use Swarm commands instead of Swarm Stack (docker-stack.yml) then you won't have a few functionalities. More specifically - with the below commands you won't have functionalities of "placement:" part that specify the max replicas per node and the type of nodes that can take the replicas. Moreover number of replicas deployed is limited to one. Of course if you want those features and more you can use your own commands to have exac resources based on your needs.
