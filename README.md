@@ -119,6 +119,12 @@ Launch all containers that will communicate between each other by using the same
 docker-compose up
 ```
 
+<hr>
+
+![image](https://user-images.githubusercontent.com/90647840/215297172-e3a1464b-4d55-4fb8-b472-cbd5d7a35136.png)
+
+After launching all containers you should see in the Docker Desktop containers list a similar view to above which means that every container is running successively. Now you can click on whatever container to see information about its image layers or enter the container's inspection, terminal, logs, or stats.
+
 # Other methods:
 ## Docker commands
 You can deploy localy this app by creating containers one by one by using docker commands separately. The order of the command is important!
@@ -278,47 +284,39 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 > **Note**
 > Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly)
 
-## Kubernetes Iperative commands
-xxx
+## Kubernetes Declarative objects
 
-## Kubernetes Iperative objects
-xxx
+The best way of deploying this app in the production is to of course use a "kubectl apply", so follow the Declarative approaches of working with K8s. It's absolutely the fastest, easiest, and most flexible way. You can deploy this app by using two times "kubectl apply" and then eventually change the manifest files depending on your needs and use "kubectl apply" again to apply modifications on all running resources by using only a single command! You theoretically can also use Imperative commands or objects but it's not necessary or even it would be a waste of time and no needed creation of unnecessary complexity.
 
-## Docker Declarative objects
-
-XXX
-
-xxx
+To run the app with Compose file, first, you have to clone this repo wherever you:
 ```shell
-git clone https://github.com/JakubSzuber/Local-Monuments-Website.git
+git clone https://github.com/JakubSzuber/Local-Monuments-Website
 ```
 
-xxx
+Enter the project's directory:
 ```shell
 cd Local-Monuments-Website
 ```
 
-xxx
+First create a our application's namespace
 ```shell
 kubectl apply -f k8s-manifests/namespace.yml
 ```
 
-xxx
+Then create all other resources at once. After you run this command there will be created: 
 ```shell
 kubectl apply -f k8s-manifests
 ```
 
-xxx
+You can print all resources within this app's namespace (so all resources that create that app): deployment for Nginx and Gunicorn, Cluster IP service for Postgres and Gunicorn, load balancer service for Nginx, and resources related to Posgres (persistent volume claim and a stateful set):
 ```shell
 kubectl get all --namespace=local-monument-website
 ```
 <br><br><br>
 
 # Final result & Clean up
-dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrba
+dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrbadocker compose down -v
 
-![image](https://user-images.githubusercontent.com/90647840/209741199-e433f15f-7473-4e12-8705-b3c049ba8bd7.png)
-todoxxxxafter launching all containers you should see in Docker Desktop containers list similar view to above what means that every conatiner is running successively. Now you can click on whatever container to see information about it's image layers or enter the container's inspection, terminal, logs or stats.
 
 <details><summary>Text source</summary>
 
