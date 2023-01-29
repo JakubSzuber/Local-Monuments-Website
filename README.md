@@ -195,6 +195,11 @@ Enter the project's directory:
 cd Local-Monuments-Website
 ```
 
+Launch all the resources needed for the application to work properly:
+```shell
+docker stack deploy -c docker-stack.yml Local-Monuments-Website
+```
+
 Furthermore you can use good looking [visualizer](https://github.com/yandeu/docker-swarm-visualizer) to visualize your Docker Swarm cluster. To see dashboard enter http://localhost:9500
 ```shell
 docker stack deploy --replicas -c visualizer.stack.yml visualizer
@@ -314,8 +319,84 @@ kubectl get all --namespace=local-monument-website
 ```
 <br><br><br>
 
+
 # Final result & Clean up
-dodaj jak usunac kontener i obraz irp. czyli zeby wyczyscic co trzrbadocker compose down -v
+
+<b>Depeneds of your method you will have different clean ups.</b>
+<hr>
+
+With <b>Docker Compose</b> you can determinate all resources with also deleting the volume used for postgres by using a single command:
+
+```shell
+docker compose down -v
+```
+<hr>
+
+With <b>Docker commands</b> you have to use a few command to delete all recources:
+
+```shell
+docker network rm monuments_net
+```
+```shell
+docker rm flask-database -v
+```
+```shell
+docker rm wsgi-server
+```
+```shell
+docker rm nginx-server
+```
+<hr>
+
+With <b>Docker Swarm Stack</b> you can determinate all resources with also deleting the volume used for postgres by using a single command:<br>
+
+```shell
+docker stack remove Local-Monuments-Website
+```
+
+You have to remove a volume separately:
+
+```shell
+docker volume rm Local-Monuments-Website_postgres_data
+```
+
+And if you additionally used a visualizer:
+
+```shell
+docker stack remove visualizer
+```
+<hr>
+
+With <b>Docker Swarm commands</b> you have to use a few command to delete all recources:
+
+```shell
+docker network rm monuments_net
+```
+```shell
+docker service rm flask-database
+```
+```shell
+docker volume rm postgres_data
+```
+```shell
+docker service rm wsgi-server
+```
+```shell
+docker service rm nginx-server
+```
+
+And if you additionally used a visualizer:
+
+```shell
+docker stack remove visualizer
+```
+<hr>
+
+With <b>Kubernets declarative</b> approach you can determinate all resources by using a single command:
+
+```shell
+kubectl delete kubectl delete -f k8s-manifests
+```
 
 
 <details><summary>Text source</summary>
