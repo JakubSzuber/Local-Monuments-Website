@@ -17,12 +17,11 @@ spec:
       storage: 1Gi
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: flask-database
   namespace: local-monument-website
 spec:
-  serviceName: flask-database
   replicas: 2
   selector:
     matchLabels:
@@ -45,11 +44,11 @@ spec:
               memory: "512Mi"
           env:
             - name: POSTGRES_USER
-              value: admin
+              value: "admin"
             - name: POSTGRES_PASSWORD
-              value: admin
+              value: "admin"
             - name: POSTGRES_DB
-              value: flask_db
+              value: "flask_db"
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
