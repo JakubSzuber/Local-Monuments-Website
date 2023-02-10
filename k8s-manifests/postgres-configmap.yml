@@ -1,0 +1,14 @@
+# This fileXXXCreate ConfigMap postgres-secret for the postgres app
+# Define default database name, user, and password
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-secret
+  labels:
+    app: local-monument-website
+    app.kubernetes.io/name: local-monument-website
+data:
+  POSTGRES_DB: flask_db  #appdb
+  POSTGRES_USER: admin  #appuser
+  POSTGRES_PASSWORD: admin  #strongpasswordapp

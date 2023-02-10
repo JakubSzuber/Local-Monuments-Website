@@ -1,0 +1,47 @@
+# This fileXXXCreate ConfigMap postgres-secret for the postgres app
+# Define default database name, user, and password
+
+apiVersion: apps/v1
+kind: Deployment # Create a deployment
+metadata:
+  name: flask-database # Set the name of the deployment
+spec:
+  replicas: 3 # Set 3 deployment replicas
+  selector:
+    matchLabels:
+      app: local-monument-website
+  template:
+    metadata:
+      labels:
+        app: local-monument-website
+    spec:
+      containers:
+        - name: flask-database
+          image: jakubszuber/custom-postgres # Docker image
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432 # Exposing the container port 5432 for PostgreSQL client connections.
+          envFrom:
+            - configMapRef:
+                name: postgres-secret # Using the ConfigMap postgres-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdata
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgres-volume-claim
+---
+apiVersion: v1
+kind: Service # Create service
+metadata:
+  name: flask-database # Sets the service name
+  labels:
+    app: local-monument-website # Defines app to create service for
+spec:
+  selector:
+    app: local-monument-website
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

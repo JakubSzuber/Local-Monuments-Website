@@ -1,0 +1,19 @@
+# This fileXXXCreate ConfigMap postgres-secret for the postgres app
+# Define default database name, user, and password
+
+apiVersion: v1
+kind: PersistentVolume # Create PV
+metadata:
+  name: postgres-volume # Sets PV name
+  labels:
+    type: local # Sets PV's type
+    app: local-monument-website
+    app.kubernetes.io/name: local-monument-website
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi # Sets PV's size
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/postgresql" # Sets PV's host path
