@@ -5,6 +5,7 @@ apiVersion: apps/v1
 kind: Deployment # Create a deployment
 metadata:
   name: flask-database # Set the name of the deployment
+  namespace: local-monument-website
 spec:
   replicas: 3 # Set 3 deployment replicas
   selector:
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
         - name: flask-database
-          image: postgres:13 # Docker image
+          image: jakubszuber/custom-postgres # Docker image
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432 # Exposing the container port 5432 for PostgreSQL client connections.
@@ -33,13 +34,13 @@ spec:
             claimName: postgres-volume-claim
 ---
 apiVersion: v1
-kind: Service # Create service
+kind: Service
 metadata:
-  name: flask-database # Sets the service name
-  labels:
-    app: local-monument-website # Defines app to create service for
+  name: flask-database
+  namespace: local-monument-website
 spec:
+  type: ClusterIP
   ports:
-    - port: 5432 # Sets the port to run the postgres application
+    - port: 5432
   selector:
     app: local-monument-website
