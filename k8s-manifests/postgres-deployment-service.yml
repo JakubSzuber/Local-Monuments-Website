@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: flask-database
-          image: jakubszuber/custom-postgres # Docker image
+          image: postgres:13 # Docker image
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432 # Exposing the container port 5432 for PostgreSQL client connections.
@@ -39,9 +39,7 @@ metadata:
   labels:
     app: local-monument-website # Defines app to create service for
 spec:
+  ports:
+    - port: 5432 # Sets the port to run the postgres application
   selector:
     app: local-monument-website
-  ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 5000
