@@ -1,5 +1,5 @@
 # Local-Monuments-Website
-This project is containerized web application created completely form scratch. Whole application is my autorship. Application is composed of 3 containers: postgres, nginx and gunicorn. In a nutshell: PostgreSQL works as our database that stores all data about monuments, gunicorn manages the traffic (content of the website) to the nginx server so you can just simple enter the localhost and use whole website. To see more information about how the website works run this application and enter the About page. This project shows plenty of ways on how to run this app but I recommend you to choose the Docker Compose because of they low complexity and short time required to run an app. When you already run this app you could enter [localhost](http://localhost:80) (default port 80) to see home page of the application.
+This project is containerized web application created completely form scratch. Whole application is my autorship. Application is composed of 3 containers: postgres, nginx and gunicorn. In a nutshell: PostgreSQL works as our database that stores all data about monuments, gunicorn manages the traffic (content of the website) to the nginx server so you can just simple enter the localhost and use whole website. To see more information about how the website works run this application and enter the About page. This project shows plenty of ways on how to run this app but I recommend you to choose the Docker Compose because of they low complexity and short time required to run an app. When you already run this app you could enter [localhost](http://localhost) (default port 80) to see home page of the application.
 
 https://user-images.githubusercontent.com/90647840/213920380-63ca8d57-2ef3-4bf2-9328-165cae569b28.mov
 
@@ -287,11 +287,11 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 
 ## Kubernetes
 > **Note**
-> Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly)
+> Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly). After deploying this app enter on the node [localhost:3007](http://localhost:3007) to see app's homepage
 
 ## Kubernetes Declarative objects
 
-The best way of deploying this app in the production is to of course use a "kubectl apply", so follow the Declarative approaches of working with K8s. It's absolutely the fastest, easiest, and most flexible way. You can deploy this app by using two times "kubectl apply" and then eventually change the manifest files depending on your needs and use "kubectl apply" again to apply modifications on all running resources by using only a single command! You theoretically can also use Imperative commands or objects but it's not necessary or even it would be a waste of time and no needed creation of unnecessary complexity.
+The best way of deploying this app in the production is to of course use a "kubectl apply", so follow the Declarative approaches of working with K8s. It's absolutely the fastest, easiest, and most flexible way. You can deploy this app by using two times "kubectl apply" and then eventually change the manifest files depending on your needs and use "kubectl apply" again to apply modifications on all running resources by using only a single command! You theoretically can also use Imperative commands or objects but it's not necessary or even it would be a waste of time and no needed creation of unnecessary complexity
 
 To run the app with Compose file, first, you have to clone this repo wherever you:
 ```shell
