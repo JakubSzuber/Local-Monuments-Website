@@ -39,10 +39,13 @@ Other:
 ├─── docker-stack.yml
 ├─── visualizer.stack.yml
 ├─── k8s-manifests
-│    ├── postgres.yml
-│    ├── gunicorn.yml
-│    ├── nginx.yml
-│    └── namespace.yml
+│    ├── namespace.yml
+│    ├── gunicorn-deployment-service.yml
+│    ├── nginx-deployment-service.yml
+│    ├── postgres-configmap.yml
+│    ├── postgres-pv.yml
+│    ├── postgres-pvc.yml
+│    └── postgres-deployment-service.yml
 ├─── README.md
 ├─── LICENSE
 └─── services
