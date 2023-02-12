@@ -74,7 +74,6 @@ services:
       restart_policy:
         condition: on-failure
         delay: 10s
-        max_attempts: 3
         window: 120s
       placement:
         max_replicas_per_node: 1
