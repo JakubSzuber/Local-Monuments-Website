@@ -291,7 +291,7 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 
 ## Kubernetes
 > **Note**
-> Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly). After deploying this app enter on the node [localhost:3007](http://localhost:3007) to see app's homepage
+> Directory k8s-manifests contains manifest files that are made generic because there are always many external tools in the Kubernetes production environment so those manifest files only implement the most core and basic infrastructure (if you want to use it you will have to enhance them significantly). After deploying this app enter on the node [localhost:3007](http://localhost:3007) to see app's homepage
 
 ## Kubernetes Declarative objects
 
@@ -307,17 +307,17 @@ Enter the project's directory:
 cd Local-Monuments-Website
 ```
 
-First create a our application's namespace
+First create a our application's namespace:
 ```shell
 kubectl apply -f k8s-manifests/namespace.yml
 ```
 
-Then create all other resources at once. After you run this command there will be created: 
+Then create all other resources at once by a single command: 
 ```shell
 kubectl apply -f k8s-manifests
 ```
 
-You can print all resources within this app's namespace (so all resources that create that app): deployment for Nginx and Gunicorn, Cluster IP service for Postgres and Gunicorn, load balancer service for Nginx, and resources related to Posgres (persistent volume claim and a stateful set):
+You can print all resources within this app's namespace (so all resources that create that app): deployment for Nginx, Gunicorn, and PostgreSQL, ClusterIP service for Postgres and Gunicorn, NodePort service for Nginx, and resources related to Posgres (Configmap, Persistant Volume, Persistant Volum Claim):
 ```shell
 kubectl get all --namespace=local-monument-website
 ```
@@ -326,7 +326,7 @@ kubectl get all --namespace=local-monument-website
 
 # Final result & Clean up
 
-<b>Depeneds of your method you will have different clean ups.</b>
+<b>Depending on your method you will have different clean-ups.</b>
 <hr>
 
 With <b>Docker Compose</b> you can determinate all resources with also deleting the volume used for postgres by using a single command:
