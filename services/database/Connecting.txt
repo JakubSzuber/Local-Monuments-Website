@@ -2,6 +2,7 @@
 1. Enter your CLI
 
 2. Connect to your postgres container "postgres-database" that runs on host "flask-database" and have database "flask_db" as a "admin" user
+# Note: if you use Docker Swarm or K8s then the name of the container will be different (just instead of "postgres-database" specify some other postgres container's name)
 docker exec -it postgres-database psql -h flask-database -d flask_db -U admin
 
 3. Enter password
