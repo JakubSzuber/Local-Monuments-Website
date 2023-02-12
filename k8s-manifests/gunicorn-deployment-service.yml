@@ -1,0 +1,46 @@
+# This file creates Deployment and Service for a Gunicorn in a Kubernetes cluster (in the local-monument-website namespace).
+# The Deployment creates one replica of a pod, with the single container that runs Gunicorn container.
+# The Service exposes the deployment on a cluster-internal IP traffic on port 5000.
+# The pod container has an environment variable and resources limits and reservations.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wsgi-server
+  namespace: local-monument-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: local-monument-website
+  template:
+    metadata:
+      labels:
+        app: local-monument-website
+    spec:
+      containers:
+        - name: wsgi-server
+          image: jakubszuber/custom-gunicorn
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wsgi-server
+  namespace: local-monument-website
+  labels:
+    app: local-monument-website
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+  selector:
+    app: local-monument-website
