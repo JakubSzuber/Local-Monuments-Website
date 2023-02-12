@@ -1,18 +1,17 @@
-# This fileXXXCreate ConfigMap postgres-secret for the postgres app
-# Define default database name, user, and password
+# This file creates a PersistentVolumeClaim resource definition for postgres-volume-claim in a Kubernetes cluster (in the local-monument-website namespace).
+# The spec section contains the storage class name, access modes, and storage resources request information.
 
 apiVersion: v1
-kind: PersistentVolumeClaim # Create PVC
+kind: PersistentVolumeClaim
 metadata:
-  name: postgres-volume-claim # Sets PVC's name
+  name: postgres-volume-claim
   namespace: local-monument-website
   labels:
-    app: local-monument-website # Defines app to create PVC for
-    app.kubernetes.io/name: local-monument-website
+    app: local-monument-website
 spec:
   storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi # Sets PVC's size
+      storage: 10Gi

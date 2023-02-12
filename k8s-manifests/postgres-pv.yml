@@ -1,20 +1,19 @@
-# This fileXXXCreate ConfigMap postgres-secret for the postgres app
-# Define default database name, user, and password
+# This file creates a PersistentVolume resource definition for postgres-volume in a Kubernetes cluster (in the local-monument-website namespace).
+# The spec section contains the storage class name, capacity, access modes, and host path information.
 
 apiVersion: v1
-kind: PersistentVolume # Create PV
+kind: PersistentVolume
 metadata:
-  name: postgres-volume # Sets PV name
+  name: postgres-volume
   namespace: local-monument-website
   labels:
-    type: local # Sets PV's type
+    type: local
     app: local-monument-website
-    app.kubernetes.io/name: local-monument-website
 spec:
   storageClassName: manual
   capacity:
-    storage: 10Gi # Sets PV's size
+    storage: 10Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/data/postgresql" # Sets PV's host path
+    path: "/data/postgresql"
