@@ -14,6 +14,7 @@ Python-related tools:
 Container-related tools:
 - Docker
 - Docker Compose
+- Docker Swarm commands
 - Docker Swarm Stack
 - Kubernetes
 
@@ -88,7 +89,7 @@ Other:
 
 ---
 
-# How to run app
+# How to run an app
 > **Note**
 > Remember that this project implements only core functionality so you should add your additional stuff in case of deploying this app on the production environment
 
@@ -100,7 +101,7 @@ https://user-images.githubusercontent.com/90647840/213922371-848ff6b3-60a8-4db2-
 </details>
 
 ## Requirements
-Whatever method to run the application you will chose you need to have [Docker](https://www.docker.com/) and [Git](https://git-scm.com/downloads) installed you your computer first. You can download docker on any OS [here](https://docs.docker.com/get-docker/). Currently best way of installing a Docker is to install whole [Docker Desktop](https://www.docker.com/products/docker-desktop/) (supported for Windows, macOS, Linux). If you already have a Docker and Git you will have to download only a images used by containers but this process should consume not more that 400 MB and is automatically performed before each container is launched (every container use lightweight versions of the images to reduce memory and time while building them, and reduce vulnerabilities). **Rememeber to run docker daemon (by e.g. open Docker Desktop app) before deploying an app localy or to make sure that your are in the cluster if you want to deploy this app in it.**
+Whatever method to run the application you will choose you need to have [Docker](https://www.docker.com/) and [Git](https://git-scm.com/downloads) installed you your computer first. You can download docker on any OS [here](https://docs.docker.com/get-docker/). Currently, the best way of installing a Docker is to install the whole [Docker Desktop](https://www.docker.com/products/docker-desktop/) (supported for Windows, macOS, and Linux). If you already have a Docker and Git you will have to download only images used by containers but this process should consume no more than 400 MB and is automatically performed before each container is launched (every container uses lightweight versions of the images to reduce memory and time while building them and reduce vulnerabilities). **Remember to run the docker daemon (by e.g. opening the Docker Desktop app) before deploying an app locally or to make sure that your are in the cluster if you want to deploy this app in it.**
 
 # Recommended method:
 ## Docker Compose
