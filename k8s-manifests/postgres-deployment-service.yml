@@ -1,13 +1,15 @@
-# This fileXXXCreate ConfigMap postgres-secret for the postgres app
-# Define default database name, user, and password
+# This file creates Deployment and Service for a PostgreSQL in a Kubernetes cluster (in the local-monument-website namespace).
+# The Deployment creates one replica of a pod, with the single container that runs Postgres container.
+# The Service exposes the deployment on a cluster-internal IP traffic on port 5432.
+# The pod container has an environment variable and resources limits and reservations.
 
 apiVersion: apps/v1
-kind: Deployment # Create a deployment
+kind: Deployment
 metadata:
-  name: flask-database # Set the name of the deployment
+  name: flask-database
   namespace: local-monument-website
 spec:
-  replicas: 3 # Set 3 deployment replicas
+  replicas: 1
   selector:
     matchLabels:
       app: local-monument-website
@@ -18,13 +20,20 @@ spec:
     spec:
       containers:
         - name: flask-database
-          image: jakubszuber/custom-postgres # Docker image
+          image: postgres:15-alpine
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
           imagePullPolicy: "IfNotPresent"
           ports:
-            - containerPort: 5432 # Exposing the container port 5432 for PostgreSQL client connections.
+            - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: postgres-secret # Using the ConfigMap postgres-secret
+                name: postgres-secret
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdata
@@ -38,6 +47,8 @@ kind: Service
 metadata:
   name: flask-database
   namespace: local-monument-website
+  labels:
+    app: local-monument-website
 spec:
   type: ClusterIP
   ports:
