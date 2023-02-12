@@ -14,8 +14,8 @@ Python-related tools:
 Container-related tools:
 - Docker
 - Docker Compose
-- Docker Swarm commands
 - Docker Swarm Stack
+- Docker Swarm commands
 - Kubernetes
 
 Other:
@@ -108,7 +108,7 @@ Whatever method to run the application you will choose you need to have [Docker]
 
 This method is recommended because it's the easiest and the fastest one. Furthermore, most features are included with it. A few deploying ways have some limited functionalities because they couldn't be applied. For example, basic Docker commands don't have a max number of replicas per node because it's not a needed thing when you what to run this app fast, locally and for example for learning purposes. Docker Compose is a good compromise (in this case) between simplicity and functionality.
 
-To run the app with Compose file, first, you have to clone this repo wherever you:
+To run the app with Compose file, first, you have to clone this repo wherever you want:
 ```shell
 git clone https://github.com/JakubSzuber/Local-Monuments-Website
 ```
@@ -118,7 +118,7 @@ Enter the project's directory:
 cd Local-Monuments-Website
 ```
 
-Launch all containers that will communicate between each other by using the same bridge network, created by docker compose by default. You can add -d flag to disable logs:
+Launch all containers that will communicate with each other by using the same bridge network, created by Docker Compose by default. You can add "-d" flag to disable logs on your console:
 ```shell
 docker-compose up
 ```
@@ -184,7 +184,7 @@ jakubszuber/custom-nginx
 
 ## Docker Swarm Stack
 
-This way of deploying this app has the most functionalities. Most features that are applied to docker-stack.yml are focused on working on the production environment. Of course, if you would like to use this application in some way on the production you probably should make some modifications and add some additional stuff depending on your needs (docker-stack.yml implements the most core and basic infrastructure). Moreover you can uncomment lines that specify that services can be deployed only on worker nodes.
+This way of deploying this app has the most functionalities. Most features that are applied to docker-stack.yml are focused on working on the production environment. Of course, if you would like to use this application in some way on the production you probably should make some modifications and add some additional stuff depending on your needs (docker-stack.yml implements the most core and basic infrastructure). Moreover you can uncomment lines that specify that services can be deployed only on worker nodes. **Remember to initialize the cluster by "docker swarm init" or just join the existing one before you deploy an app by using this way**
 
 > **Note**
 > The Nginx container may restart a few times before it finally becomes stable. That's because the WSGI server (which is required for Nginx work) takes some time to start, so you'll just have to wait around one minute
@@ -211,12 +211,12 @@ docker stack deploy --replicas -c visualizer.stack.yml visualizer
 
 ## Docker Swarm commands
 
-You can deploy locally this app in the Swarm cluster by creating containers one by one by using docker commands in a shell instead of using a Docker Swarm Stack. Remember that the order of the command is important!
+You can deploy locally this app in the Swarm cluster by creating containers one by one by using Docker Swarm Commands in a shell instead of using a Docker Swarm Stack. Remember that the order of the command is important!
 
 > **Note**
-> If you decided to use Swarm commands instead of Swarm Stack (docker-stack.yml) then you won't have a few functionalities. More specifically - with the below commands you won't have functionalities of "placement:" part that specify the max replicas per node and the type of nodes that can take the replicas. Moreover number of replicas deployed is limited to one. Of course if you want those features and more you can use your own commands to have exac resources based on your needs.
+> If you decided to use Swarm commands instead of Swarm Stack (docker-stack.yml) then you won't have a few functionalities. More specifically - with the below commands you won't have functionalities of "placement:" part that specify the max replicas per node and the type of nodes that can take the replicas. Moreover number of replicas deployed is limited to one. Of course if you want those features and more you can use your own commands to have exact resources that you want based on your needs.
 
-First create a bridge network for the containers (you can additionally add flags to specify your gateway, network's private IPv4, and subnet mask e.g. "--gateway 127.0.0.1" --subnet 127.0.0.1/24):
+First create a overlay network for the containers (you can additionally add flags to specify your gateway, network's private IPv4, and subnet mask e.g. "--gateway 127.0.0.1" --subnet 127.0.0.1/24):
 ```shell
 docker network create --driver overlay monuments_net
 ```
